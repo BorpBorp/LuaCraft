@@ -22,7 +22,7 @@ public class EntityLib extends LuaTable {
 
         rawset(LuaValue.valueOf("SetHealth"), new OneArgFunction() {
             public LuaValue call(LuaValue arg) {
-                int newHealth = arg.toint();
+                double newHealth = arg.todouble();
 
                 entity.setHealth(newHealth);
 
