@@ -6,7 +6,7 @@
 
     <groupId>com.luacraft</groupId>
     <artifactId>LuaCraft</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     
     <name>LuaCraft</name>
     <url>http://www.example.com</url>
