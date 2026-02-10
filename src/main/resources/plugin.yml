@@ -1,0 +1,9 @@
+main: com.luacraft.LuaCraft
+version: 1.0.0-SNAPSHOT
+name: LuaCraft
+author: BorpBorp
+api-version: 1.21
+commands:
+  lua:
+    description: A basic lua trigger command
+    usage: /lua

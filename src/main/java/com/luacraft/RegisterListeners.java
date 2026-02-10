@@ -1,0 +1,18 @@
+package com.luacraft;
+
+import java.util.Map;
+
+import org.bukkit.plugin.Plugin;
+import org.luaj.vm2.Globals;
+
+import com.luacraft.sandbox.events.PlayerBlockBreak;
+import com.luacraft.sandbox.events.PlayerJoin;
+import com.luacraft.sandbox.events.PlayerQuit;
+
+public class RegisterListeners {
+    public static void registerListeners(Plugin plugin, Map<String, Globals> allGlobals) {
+        plugin.getServer().getPluginManager().registerEvents(new PlayerJoin(allGlobals), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerQuit(allGlobals), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerBlockBreak(allGlobals), plugin);
+    }
+}
