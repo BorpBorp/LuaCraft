@@ -1,7 +1,6 @@
 package com.luacraft.sandbox.entity;
 
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Pig;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.luaj.vm2.LuaTable;
@@ -42,15 +41,5 @@ public class EntityLib extends LuaTable {
             Inventory inv = ((InventoryHolder) entity).getInventory();
             rawset(LuaValue.valueOf("Inventory"), new InventoryLib(inv));
         }
-
-        rawset(LuaValue.valueOf("SetSaddle"), new OneArgFunction() {
-            public LuaValue call(LuaValue arg) {
-                if (entity instanceof Pig pig) {
-                    pig.setSaddle(arg.toboolean());
-                }
-                
-                return LuaValue.NIL;
-            }
-        });
     }
 }
