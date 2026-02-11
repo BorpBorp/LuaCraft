@@ -10,8 +10,8 @@ import org.luaj.vm2.Varargs;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.VarArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
-import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
+import com.luacraft.sandbox.component.ComponentLib;
 import com.luacraft.sandbox.util.ComponentUtils;
 
 import net.kyori.adventure.text.Component;
@@ -44,7 +44,7 @@ public class ChatLib extends LuaTable {
                     message = message.append(Component.text(text).color(currentColor));
                 }
 
-                return CoerceJavaToLua.coerce(message);
+                return new ComponentLib(message);
             }
         });
 
