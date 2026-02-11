@@ -66,7 +66,6 @@ public class PlayerBlockBreak implements Listener {
             };
 
             LuaTable luaEvent = new LuaTable();
-            luaEvent.set("raw", CoerceJavaToLua.coerce(event));
             luaEvent.set("shouldBreak", shouldBreak);
             luaEvent.set("shouldDropItems", shouldDropItems);
             luaEvent.set("player", new PlayerLib(player));

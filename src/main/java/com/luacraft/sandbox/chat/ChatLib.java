@@ -12,6 +12,8 @@ import org.luaj.vm2.lib.VarArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
+import com.luacraft.sandbox.util.ComponentUtils;
+
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
@@ -51,12 +53,10 @@ public class ChatLib extends LuaTable {
             public LuaValue call(LuaValue arg) {
                 Component message;
 
-                if (arg.isuserdata(Component.class)) {
-                    message = (Component) arg.touserdata(Component.class);
-                } else if (arg.isstring()) {
-                    message = Component.text(arg.tojstring());
+                if (!arg.isnil()) {
+                    message = ComponentUtils.luaValueToComponent(arg);
                 } else {
-                    throw new LuaError("broadcast expects Component or string");
+                    throw new LuaError("broadcast expects a String or Component");
                 }
 
                 for (Player player : Bukkit.getOnlinePlayers()) {
@@ -76,43 +76,6 @@ public class ChatLib extends LuaTable {
                         player.sendMessage(" ");
                     }
                 }
-
-                return LuaValue.NIL;
-            }
-        });
-
-        rawset(LuaString.valueOf("coloredBroadcast"), new VarArgFunction() {
-            @Override
-            public Varargs invoke(Varargs args) {
-
-                Component message = Component.empty();
-                String rawMessage = "";
-                TextColor currentColor = TextColor.color(255, 255, 255);
-
-                for (int i = 1; i <= args.narg(); i++) {
-                    LuaValue arg = args.arg(i);
-
-                    if (arg.istable() && arg.get("r").isnumber()) {
-                        int r = arg.get("r").toint();
-                        int g = arg.get("g").toint();
-                        int b = arg.get("b").toint();
-
-                        currentColor = TextColor.color(r, g, b);
-                        continue;
-                    }
-
-                    if (arg.isstring()) {
-                        rawMessage.concat(arg.tojstring());
-                    }
-
-                    String text = arg.tojstring();
-                    message = message.append(Component.text(text).color(currentColor));
-                }
-
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    player.sendMessage(message);
-                }
-                Bukkit.getLogger().info(rawMessage);
 
                 return LuaValue.NIL;
             }

@@ -7,6 +7,7 @@ import org.luaj.vm2.Globals;
 
 import com.luacraft.sandbox.events.PlayerBlockBreak;
 import com.luacraft.sandbox.events.PlayerJoin;
+import com.luacraft.sandbox.events.PlayerMove;
 import com.luacraft.sandbox.events.PlayerQuit;
 
 public class RegisterListeners {
@@ -14,5 +15,6 @@ public class RegisterListeners {
         plugin.getServer().getPluginManager().registerEvents(new PlayerJoin(allGlobals), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerQuit(allGlobals), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerBlockBreak(allGlobals), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new PlayerMove(allGlobals), plugin);
     }
 }

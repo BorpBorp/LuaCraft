@@ -16,8 +16,7 @@ import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
 import com.luacraft.sandbox.entity.PlayerLib;
-
-import net.kyori.adventure.text.Component;
+import com.luacraft.sandbox.util.ComponentUtils;
 
 public class PlayerQuit implements Listener {
     private Map<String, Globals> allGlobals = new HashMap<>();
@@ -40,15 +39,14 @@ public class PlayerQuit implements Listener {
                     if (arg.isnil()) {
                         event.quitMessage(null);
                     } else {
-                        Component message = (Component) arg.checkuserdata(Component.class);
-                        event.quitMessage(message);
+                        event.quitMessage(ComponentUtils.luaValueToComponent(arg));
                     }
+
                     return LuaValue.NIL;
                 }
             };
 
             LuaTable luaEvent = new LuaTable();
-            luaEvent.set("raw", CoerceJavaToLua.coerce(event));
             luaEvent.set("setQuitMessage", setQuitMessage);
             luaEvent.set("player", new PlayerLib(player));
             if (!function.isnil() && function.isfunction()) {
