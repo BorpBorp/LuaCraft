@@ -21,7 +21,7 @@ import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 public class ChatLib extends LuaTable {
     public ChatLib() {
 
-        rawset(LuaString.valueOf("coloredString"), new VarArgFunction() {
+        rawset(LuaString.valueOf("ColoredString"), new VarArgFunction() {
             @Override
             public Varargs invoke(Varargs args) {
 
@@ -48,7 +48,7 @@ public class ChatLib extends LuaTable {
             }
         });
 
-        rawset(LuaString.valueOf("broadcast"), new OneArgFunction() {
+        rawset(LuaString.valueOf("Broadcast"), new OneArgFunction() {
             @Override
             public LuaValue call(LuaValue arg) {
                 Component message;
@@ -72,7 +72,7 @@ public class ChatLib extends LuaTable {
             }
         });
 
-        rawset(LuaString.valueOf("clearAll"), new ZeroArgFunction() {
+        rawset(LuaString.valueOf("ClearAll"), new ZeroArgFunction() {
             @Override
             public LuaValue call() {
                 for (Player player : Bukkit.getOnlinePlayers()) {

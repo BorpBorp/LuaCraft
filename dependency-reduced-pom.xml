@@ -27,9 +27,15 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <relocations>
+                <relocation>
+                  <pattern>org.bstats</pattern>
+                  <shadedPattern>com.luacraft.bstats</shadedPattern>
+                </relocation>
+              </relocations>
               <transformers>
                 <transformer>
-                  <mainClass>com.moonscript.Moonscript</mainClass>
+                  <mainClass>com.luacraft.LuaCraft</mainClass>
                 </transformer>
               </transformers>
             </configuration>

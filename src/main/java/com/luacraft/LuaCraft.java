@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.luaj.vm2.Globals;
@@ -22,6 +23,9 @@ public class LuaCraft extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+
+        int pluginId = 29491;
+        Metrics metrics = new Metrics(this, pluginId);
 
         RegisterListeners.registerListeners(this, allGlobals);
 
