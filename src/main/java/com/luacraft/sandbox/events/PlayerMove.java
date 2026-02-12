@@ -92,14 +92,14 @@ public class PlayerMove implements Listener {
             };
 
             LuaTable luaEvent = new LuaTable();
-            luaEvent.set("shouldMove", shouldMove);
-            luaEvent.set("getLastPosition", getLastPosition);
-            luaEvent.set("hasChangedBlock", hasChangedBlock);
-            luaEvent.set("hasChangedOrientation", hasChangedOrientation);
-            luaEvent.set("hasChangedPosition", hasChangedPosition);
-            luaEvent.set("explicitHasChangedBlock", explicitHasChangedBlock);
-            luaEvent.set("explicitHasChangedPosition", explicitHasChangedPosition);
-            luaEvent.set("player", new PlayerLib(player));
+            luaEvent.set("ShouldMove", shouldMove);
+            luaEvent.set("GetLastPosition", getLastPosition);
+            luaEvent.set("HasChangedBlock", hasChangedBlock);
+            luaEvent.set("HasChangedOrientation", hasChangedOrientation);
+            luaEvent.set("HasChangedPosition", hasChangedPosition);
+            luaEvent.set("ExplicitHasChangedBlock", explicitHasChangedBlock);
+            luaEvent.set("ExplicitHasChangedPosition", explicitHasChangedPosition);
+            luaEvent.set("Player", new PlayerLib(player));
 
             if (!function.isnil()) {
                 try {

@@ -1,0 +1,22 @@
+{
+    "onPlayerJoin": {
+        "Description": "Called when a player joins the server",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who joined",
+                "Type": "Player"
+            }
+        },
+        "AvailableFunctions": {
+            "setJoinMessage": {
+                "Description": "Set or Disable the public Join message shown to players",
+                "Parameters": {
+                    "name": "Message",
+                    "types": ["String", "Component"]
+                }
+            }
+        }
+    }
+}

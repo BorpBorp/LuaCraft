@@ -47,8 +47,8 @@ public class PlayerQuit implements Listener {
             };
 
             LuaTable luaEvent = new LuaTable();
-            luaEvent.set("setQuitMessage", setQuitMessage);
-            luaEvent.set("player", new PlayerLib(player));
+            luaEvent.set("SetQuitMessage", setQuitMessage);
+            luaEvent.set("Player", new PlayerLib(player));
             if (!function.isnil() && function.isfunction()) {
                 try {
                     function.call(CoerceJavaToLua.coerce(luaEvent));

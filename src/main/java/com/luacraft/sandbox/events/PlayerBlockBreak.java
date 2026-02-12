@@ -38,12 +38,8 @@ public class PlayerBlockBreak implements Listener {
             LuaFunction shouldBreak = new LuaFunction() {
                 @Override
                 public LuaValue call(LuaValue arg) {
-                    if (arg.isboolean()) {
-                        if (arg == LuaValue.TRUE) {
-                            event.setCancelled(false);
-                        } else {
-                            event.setCancelled(true);
-                        }
+                    if (arg.isboolean() || arg.isnil()) {
+                        event.setCancelled(arg.toboolean());
                     }
 
                     return LuaValue.NIL;
@@ -53,12 +49,8 @@ public class PlayerBlockBreak implements Listener {
             LuaFunction shouldDropItems = new LuaFunction() {
                 @Override
                 public LuaValue call(LuaValue arg) {
-                    if (arg.isboolean()) {
-                        if (arg == LuaValue.TRUE) {
-                            event.setDropItems(false);
-                        } else {
-                            event.setDropItems(true);
-                        }
+                    if (arg.isboolean() || arg.isnil()) {
+                        event.setDropItems(arg.toboolean());
                     }
 
                     return LuaValue.NIL;
@@ -66,10 +58,10 @@ public class PlayerBlockBreak implements Listener {
             };
 
             LuaTable luaEvent = new LuaTable();
-            luaEvent.set("shouldBreak", shouldBreak);
-            luaEvent.set("shouldDropItems", shouldDropItems);
-            luaEvent.set("player", new PlayerLib(player));
-            luaEvent.set("block", new BlockLib(block));
+            luaEvent.set("ShouldBreak", shouldBreak);
+            luaEvent.set("ShouldDropItems", shouldDropItems);
+            luaEvent.set("Player", new PlayerLib(player));
+            luaEvent.set("Block", new BlockLib(block));
             if (!function.isnil() && function.isfunction()) {
                 try {
                     function.call(CoerceJavaToLua.coerce(luaEvent));

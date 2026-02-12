@@ -8,6 +8,8 @@ import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
 
+import com.luacraft.sandbox.location.LocationLib;
+
 public class BlockLib extends LuaTable {
     public BlockLib(Block block) {
         rawset(LuaValue.valueOf("GetType"), new ZeroArgFunction() {
@@ -43,6 +45,13 @@ public class BlockLib extends LuaTable {
                 block.setType(material);
 
                 return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("GetLocation"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                return new LocationLib(block.getLocation());
             }
         });
     }

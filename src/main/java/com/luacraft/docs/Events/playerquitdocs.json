@@ -1,0 +1,22 @@
+{
+    "onPlayerQuit": {
+        "Description": "Called when a player quits the server",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who quit",
+                "Type": "Player"
+            }
+        },
+        "AvailableFunctions": {
+            "setQuitMessage": {
+                "Description": "Set or Disable the public Quit message shown to players",
+                "Parameters": {
+                    "name": "Message",
+                    "types": ["String", "Component"]
+                }
+            }
+        }
+    }
+}

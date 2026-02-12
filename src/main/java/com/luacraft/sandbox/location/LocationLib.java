@@ -1,6 +1,7 @@
 package com.luacraft.sandbox.location;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
@@ -53,9 +54,20 @@ public class LocationLib extends LuaTable {
                 throw new org.luaj.vm2.LuaError("DistanceToSquared requires a Location object");
             }
         });
+
+        rawset(LuaValue.valueOf("SetBlockAtLocation"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue arg) {
+                Material material = Material.matchMaterial(arg.tojstring());
+
+                location.getBlock().setType(material);
+
+                return LuaValue.NIL;
+            }
+        });
     }
 
-    private Location getLocation() {
+    public Location getLocation() {
         return location;
     }
 }

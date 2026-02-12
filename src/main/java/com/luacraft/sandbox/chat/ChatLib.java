@@ -54,7 +54,11 @@ public class ChatLib extends LuaTable {
                 Component message;
 
                 if (!arg.isnil()) {
-                    message = ComponentUtils.luaValueToComponent(arg);
+                    if (!arg.isuserdata(Component.class)) {
+                        message = ComponentUtils.luaValueToComponent(arg);
+                    } else {
+                        message = Component.text(arg.tojstring());
+                    }
                 } else {
                     throw new LuaError("broadcast expects a String or Component");
                 }

@@ -47,8 +47,8 @@ public class PlayerJoin implements Listener {
             };
 
             LuaTable luaEvent = new LuaTable();
-            luaEvent.set("setJoinMessage", setJoinMessage);
-            luaEvent.set("player", new PlayerLib(player));
+            luaEvent.set("SetJoinMessage", setJoinMessage);
+            luaEvent.set("Player", new PlayerLib(player));
 
             if (!function.isnil() && function.isfunction()) {
                 try {

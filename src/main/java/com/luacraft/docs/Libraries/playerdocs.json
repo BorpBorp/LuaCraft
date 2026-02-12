@@ -1,0 +1,29 @@
+{
+    "IsFlying": {
+        "Category": "Player",
+        "Description": "Get the player's current flying state",
+        "ReturnType": "Boolean",
+        "Returns": "FlyingState"
+    },
+    
+    "SetFlying": {
+        "Category": "Player",
+        "Description": "Set the players current flying state",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["FlyingState"]
+    },
+
+    "GetDisplayName": {
+        "Category": "Player",
+        "Description": "Get the Display Name of the player",
+        "ReturnType": "Component",
+        "Returns": "DisplayName"
+    },
+
+    "SetDisplayName": {
+        "Category": "Player",
+        "Description": "Set the Display Name of the player",
+        "ArgumentTypes": ["Component|String"],
+        "Arguments": ["DisplayName"]
+    }
+}
