@@ -13,3 +13,13 @@ LuaCraft currently supports 1.21.4+ and will intend to support this version and 
 We unfortunately do not intend to support Spigot in the future either
 # Download
 You can download the latest release of LuaCraft at the [Releases](https://github.com/BorpBorp/LuaCraft/releases)
+# Example
+```lua
+function ServerEvent.OnPlayerJoin(event)
+   local player = event.player
+   local red = Color(255, 0, 0)
+   local component = Chat.ColoredString(red, "Hello world")
+
+   Chat.Broadcast(component)
+end
+```
