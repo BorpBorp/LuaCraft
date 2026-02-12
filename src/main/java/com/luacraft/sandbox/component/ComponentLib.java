@@ -4,6 +4,7 @@ import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
+import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
@@ -22,6 +23,13 @@ public class ComponentLib extends LuaTable {
             @Override
             public LuaValue call() {
                 return LuaValue.valueOf(PlainTextComponentSerializer.plainText().serialize(component));
+            }
+        });
+
+        rawset(LuaValue.valueOf("Get"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                return CoerceJavaToLua.coerce(component);
             }
         });
     }
