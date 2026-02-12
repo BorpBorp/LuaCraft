@@ -26,7 +26,7 @@ public class PlayerJoin implements Listener {
     }
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public void OnPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
         for (Globals globals : allGlobals.values()) {

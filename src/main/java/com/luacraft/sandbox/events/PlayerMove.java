@@ -27,7 +27,7 @@ public class PlayerMove implements Listener {
     }
 
     @EventHandler
-    public void onPlayerMove(PlayerMoveEvent event) {
+    public void OnPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
         for (Globals globals : allGlobals.values()) {

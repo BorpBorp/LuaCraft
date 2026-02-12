@@ -26,7 +26,7 @@ public class PlayerQuit implements Listener {
     }
 
     @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent event) {
+    public void OnPlayerQuit(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
         for (Globals globals : allGlobals.values()) {

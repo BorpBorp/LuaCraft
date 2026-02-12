@@ -30,7 +30,7 @@ public class PlayerBlockPlace implements Listener {
     }
 
     @EventHandler
-    public void onBlockPlace(BlockPlaceEvent event) {
+    public void OnBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
 
         for (Globals globals : allGlobals.values()) {
