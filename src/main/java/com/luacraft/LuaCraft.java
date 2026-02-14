@@ -41,7 +41,7 @@ public class LuaCraft extends JavaPlugin {
 
         ScriptLoader.passDataLib(dataLib);
         
-        Bukkit.getScheduler().runTaskTimer(plugin, () -> dataLib.flush(), 200L, 200L);
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> dataLib.flush(), 1200L, 1200L);
 
         SQLiteLib.initialize(pluginDataFile.getAbsolutePath());
 
