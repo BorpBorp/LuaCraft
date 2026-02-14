@@ -5,6 +5,7 @@ import java.util.Map;
 import org.bukkit.plugin.Plugin;
 import org.luaj.vm2.Globals;
 
+import com.luacraft.sandbox.events.AsyncChat;
 import com.luacraft.sandbox.events.PlayerBlockBreak;
 import com.luacraft.sandbox.events.PlayerJoin;
 import com.luacraft.sandbox.events.PlayerMove;
@@ -16,5 +17,6 @@ public class RegisterListeners {
         plugin.getServer().getPluginManager().registerEvents(new PlayerQuit(allGlobals), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerBlockBreak(allGlobals), plugin);
         plugin.getServer().getPluginManager().registerEvents(new PlayerMove(allGlobals), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new AsyncChat(allGlobals), plugin);
     }
 }

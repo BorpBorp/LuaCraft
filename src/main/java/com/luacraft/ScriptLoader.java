@@ -16,10 +16,12 @@ import org.luaj.vm2.lib.jse.JsePlatform;
 
 import com.luacraft.sandbox.chat.ChatLib;
 import com.luacraft.sandbox.command.CommandLib;
+import com.luacraft.sandbox.component.ComponentFactory;
+import com.luacraft.sandbox.database.SQLiteLuaLib;
 import com.luacraft.sandbox.events.EventTable;
+import com.luacraft.sandbox.inventory.InventoryFactory;
 import com.luacraft.sandbox.item.ItemStackFactory;
 import com.luacraft.sandbox.location.LocationFactory;
-import com.luacraft.sandbox.util.ColorUtils;
 import com.luacraft.sandbox.util.PlayerUtil;
 import com.luacraft.sandbox.util.WaitUtil;
 
@@ -29,9 +31,14 @@ public class ScriptLoader {
 
     private static File scriptsFolder;
     private static Plugin mainPlugin;
+    private static SQLiteLuaLib dataLib;
     public static void setScriptsFolder(File pluginScriptFolder, Plugin plugin) {
         scriptsFolder = pluginScriptFolder;
         mainPlugin = plugin;
+    }
+
+    public static void passDataLib(SQLiteLuaLib lib) {
+        dataLib = lib;
     }
 
     /**
@@ -46,13 +53,15 @@ public class ScriptLoader {
         globals.set("package", LuaValue.NIL);
         
         globals.set("Chat", new ChatLib());
-        globals.set("Color", ColorUtils.Color());
         globals.set("ServerEvent", new EventTable());
         globals.set("Itemstack", new ItemStackFactory());
         globals.set("Location", new LocationFactory());
+        globals.set("Component", new ComponentFactory());
+        globals.set("Inventory", new InventoryFactory());
         globals.set("Wait", WaitUtil.Wait(mainPlugin));
         globals.set("PlayerUtil", new PlayerUtil());
         globals.set("Command", new CommandLib(fileName));
+        globals.set("SQL", dataLib);
     }
 
     /**
@@ -104,7 +113,7 @@ public class ScriptLoader {
                 continue;
             }
 
-            Bukkit.getScheduler().runTask(mainPlugin, () -> CommandLib.commandUnRegister(data.fileName()));
+            CommandLib.commandUnRegister(data.fileName());
 
             LuaValue loadedScript = globals.load(data.fileContents(), data.fileName());
 

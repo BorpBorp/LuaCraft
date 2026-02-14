@@ -35,7 +35,7 @@ public class PlayerBlockPlace implements Listener {
 
         for (Globals globals : allGlobals.values()) {
             LuaValue eventsTable = globals.get("ServerEvent");
-            LuaValue function = eventsTable.get("onBlockPlace");
+            LuaValue function = eventsTable.get("OnBlockPlace");
 
             LuaFunction canBuild = new ZeroArgFunction() {
                 @Override
@@ -72,7 +72,7 @@ public class PlayerBlockPlace implements Listener {
                 }
             };
 
-            LuaFunction setBuild = new OneArgFunction() {
+            LuaFunction shouldBuild = new OneArgFunction() {
                 @Override
                 public LuaValue call(LuaValue canBuild) {
                     if (canBuild.isboolean() || canBuild.isnil()) {
@@ -85,11 +85,11 @@ public class PlayerBlockPlace implements Listener {
                 }
             };
 
-            LuaFunction canPlace = new OneArgFunction() {
+            LuaFunction shouldPlace = new OneArgFunction() {
                 @Override
                 public LuaValue call(LuaValue place) {
                     if (place.isboolean() || place.isnil()) {
-                        event.setCancelled(place.toboolean());
+                        event.setCancelled(!place.toboolean());
                     } else {
                         throw new LuaError("CanPlace requires a boolean argument");
                     }
@@ -105,8 +105,8 @@ public class PlayerBlockPlace implements Listener {
             luaEvent.set("GetBlockPlaced", getBlockPlaced);
             luaEvent.set("GetHand", getHand);
             luaEvent.set("GetItemInHand", getItemInHand);
-            luaEvent.set("SetBuild", setBuild);
-            luaEvent.set("CanPlace", canPlace);
+            luaEvent.set("ShouldBuild", shouldBuild);
+            luaEvent.set("ShouldPlace", shouldPlace);
             if (!function.isnil() && function.isfunction()) {
                 try {
                     function.call(CoerceJavaToLua.coerce(luaEvent));

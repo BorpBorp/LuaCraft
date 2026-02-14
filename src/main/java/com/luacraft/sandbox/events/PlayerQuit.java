@@ -31,7 +31,7 @@ public class PlayerQuit implements Listener {
 
         for (Globals globals : allGlobals.values()) {
             LuaValue eventsTable = globals.get("ServerEvent");
-            LuaValue function = eventsTable.get("onPlayerQuit");
+            LuaValue function = eventsTable.get("OnPlayerQuit");
 
             LuaFunction setQuitMessage = new LuaFunction() {
                 @Override

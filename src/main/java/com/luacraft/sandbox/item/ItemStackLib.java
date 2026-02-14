@@ -5,8 +5,9 @@ import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
+import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
-import com.luacraft.sandbox.component.ComponentLib;
+import com.luacraft.sandbox.component.LuaComponent;
 import com.luacraft.sandbox.util.ComponentUtils;
 
 import net.kyori.adventure.text.Component;
@@ -32,7 +33,7 @@ public class ItemStackLib extends LuaTable {
                 var meta = itemstack.getItemMeta();
                 Component itemName = meta.displayName();
 
-                return new ComponentLib(itemName);
+                return CoerceJavaToLua.coerce(new LuaComponent(itemName));
            } 
         });
     }

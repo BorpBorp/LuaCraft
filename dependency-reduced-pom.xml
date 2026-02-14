@@ -3,23 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.luacraft</groupId>
   <artifactId>LuaCraft</artifactId>
-  <name>LuaCraft</name>
-  <version>1.2.0</version>
-  <url>http://www.example.com</url>
+  <version>1.3.0</version>
   <build>
-    <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
-    <resources>
-      <resource>
-        <directory>${project.basedir}/src/main/resources</directory>
-        <includes>
-          <include>plugin.yml</include>
-        </includes>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.5.1</version>
+        <version>3.6.1</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -27,12 +16,32 @@
               <goal>shade</goal>
             </goals>
             <configuration>
+              <minimizeJar>true</minimizeJar>
               <relocations>
                 <relocation>
                   <pattern>org.bstats</pattern>
                   <shadedPattern>com.luacraft.bstats</shadedPattern>
                 </relocation>
+                <relocation>
+                  <pattern>com.zaxxer.hikari</pattern>
+                  <shadedPattern>com.luacraft.libs.hikari</shadedPattern>
+                </relocation>
+                <relocation>
+                  <pattern>org.apache.commons.text</pattern>
+                  <shadedPattern>com.luacraft.libs.commonstext</shadedPattern>
+                </relocation>
               </relocations>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                    <exclude>META-INF/MANIFEST.MF</exclude>
+                  </excludes>
+                </filter>
+              </filters>
               <transformers>
                 <transformer>
                   <mainClass>com.luacraft.LuaCraft</mainClass>
@@ -49,12 +58,22 @@
       <id>paper-repo</id>
       <url>https://repo.papermc.io/repository/maven-public/</url>
     </repository>
+    <repository>
+      <id>jitpack.io</id>
+      <url>https://jitpack.io</url>
+    </repository>
   </repositories>
   <dependencies>
     <dependency>
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
       <version>1.21.4-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.github.MilkBowl</groupId>
+      <artifactId>VaultAPI</artifactId>
+      <version>1.7.1</version>
       <scope>provided</scope>
     </dependency>
   </dependencies>

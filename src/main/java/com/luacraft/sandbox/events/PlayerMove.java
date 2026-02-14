@@ -32,7 +32,7 @@ public class PlayerMove implements Listener {
 
         for (Globals globals : allGlobals.values()) {
             LuaValue eventsTable = globals.get("ServerEvent");
-            LuaValue function = eventsTable.get("onPlayerMove");
+            LuaValue function = eventsTable.get("OnPlayerMove");
 
             LuaFunction shouldMove = new LuaFunction() {
                 @Override
@@ -40,7 +40,7 @@ public class PlayerMove implements Listener {
                     if (arg.isboolean() || arg.isnil()) {
                         boolean val = arg.toboolean();
 
-                        event.setCancelled(val);
+                        event.setCancelled(!val);
                     } else {
                         throw new LuaError("shouldMove requires a boolean!");
                     }

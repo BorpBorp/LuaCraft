@@ -31,7 +31,7 @@ public class PlayerJoin implements Listener {
 
         for (Globals globals : allGlobals.values()) {
             LuaValue eventsTable = globals.get("ServerEvent");
-            LuaValue function = eventsTable.get("onPlayerJoin");
+            LuaValue function = eventsTable.get("OnPlayerJoin");
 
             LuaFunction setJoinMessage = new LuaFunction() {
                 @Override

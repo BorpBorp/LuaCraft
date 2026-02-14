@@ -33,13 +33,13 @@ public class PlayerBlockBreak implements Listener {
 
         for (Globals globals : allGlobals.values()) {
             LuaValue serverEvent = globals.get("ServerEvent");
-            LuaValue function = serverEvent.get("onBlockBreak");
+            LuaValue function = serverEvent.get("OnBlockBreak");
 
             LuaFunction shouldBreak = new LuaFunction() {
                 @Override
                 public LuaValue call(LuaValue arg) {
                     if (arg.isboolean() || arg.isnil()) {
-                        event.setCancelled(arg.toboolean());
+                        event.setCancelled(!arg.toboolean());
                     }
 
                     return LuaValue.NIL;
