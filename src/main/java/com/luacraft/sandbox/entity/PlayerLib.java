@@ -1,6 +1,8 @@
 package com.luacraft.sandbox.entity;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
@@ -14,7 +16,7 @@ import com.luacraft.sandbox.util.ComponentUtils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
-public class PlayerLib extends EntityLib {
+public class PlayerLib extends LivingEntityLib {
     private final Player player;
 
     public PlayerLib(Player player) {
@@ -133,6 +135,20 @@ public class PlayerLib extends EntityLib {
             @Override
             public LuaValue call() {
                 return LuaValue.valueOf(player.getUniqueId().toString());
+            }
+        });
+
+        rawset(LuaValue.valueOf("GetAllPlayers"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                LuaTable table = new LuaTable();
+                Integer i = 1;
+
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    table.insert(i++, new PlayerLib(player));
+                }
+
+                return table;
             }
         });
 

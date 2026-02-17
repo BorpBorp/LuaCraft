@@ -5,7 +5,7 @@ import org.bukkit.entity.Pig;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 
-public class AnimalsLib extends EntityLib {
+public class AnimalsLib extends LivingEntityLib {
     public AnimalsLib(Animals animal) {
         super(animal);
         

@@ -1,6 +1,7 @@
 main: com.luacraft.LuaCraft
-version: 1.3.0
-depend: [Vault]
+version: 2.1.0
+softdepend:
+ - Vault
 name: LuaCraft
 author: BorpBorp
 api-version: 1.21

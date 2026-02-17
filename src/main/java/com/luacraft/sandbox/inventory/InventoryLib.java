@@ -1,8 +1,10 @@
 package com.luacraft.sandbox.inventory;
 
+import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
@@ -69,6 +71,59 @@ public class InventoryLib extends LuaTable {
                 }
 
                 return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("SetMetaTag"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue value) {
+                InventoryHolder holder = inventory.getHolder();
+                if (holder instanceof LuaInventoryHolder) {
+                    LuaInventoryHolder luaHolder = (LuaInventoryHolder) holder;
+                    if (luaHolder != null) {
+                        luaHolder.getScriptData().set("meta", value);
+                    }
+                }
+
+                return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("GetMetaTag"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                InventoryHolder holder = inventory.getHolder();
+                if (holder instanceof LuaInventoryHolder) {
+                    LuaInventoryHolder luaHolder = (LuaInventoryHolder) holder;
+                    if (luaHolder != null) {
+                        return luaHolder.getScriptData().get("meta");
+                    }
+                }
+
+                return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("GetSize"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                return LuaValue.valueOf(inventory.getSize());
+            }
+        });
+
+        rawset(LuaValue.valueOf("GetSlots"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                LuaTable items = new LuaTable();
+                ItemStack[] contents = inventory.getContents();
+                for (int i = 0; i < contents.length; i++) {
+                    ItemStack item = contents[i];
+                    if (item != null && item.getType() != Material.AIR) {
+                        items.set(i + 1, new ItemStackLib(item));
+                    }
+                }
+
+                return items;
             }
         });
     }

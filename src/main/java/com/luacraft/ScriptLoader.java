@@ -22,19 +22,27 @@ import com.luacraft.sandbox.events.EventTable;
 import com.luacraft.sandbox.inventory.InventoryFactory;
 import com.luacraft.sandbox.item.ItemStackFactory;
 import com.luacraft.sandbox.location.LocationFactory;
+import com.luacraft.sandbox.scoreboard.ScoreboardFactory;
+import com.luacraft.sandbox.util.ColorUtils;
 import com.luacraft.sandbox.util.PlayerUtil;
 import com.luacraft.sandbox.util.WaitUtil;
+import com.luacraft.sandbox.velocity.VectorFactory;
 
 public class ScriptLoader {
     public record FileData(String fileName, String fileContents) {}
 
 
     private static File scriptsFolder;
+    private static File addonsFolder;
     private static Plugin mainPlugin;
     private static SQLiteLuaLib dataLib;
     public static void setScriptsFolder(File pluginScriptFolder, Plugin plugin) {
         scriptsFolder = pluginScriptFolder;
         mainPlugin = plugin;
+    }
+
+    public static void setAddonsFolder(File pluginAddonFolder) {
+        addonsFolder = pluginAddonFolder;
     }
 
     public static void passDataLib(SQLiteLuaLib lib) {
@@ -50,7 +58,6 @@ public class ScriptLoader {
         globals.set("os", LuaValue.NIL);
         globals.set("io", LuaValue.NIL);
         globals.set("debug", LuaValue.NIL);
-        globals.set("package", LuaValue.NIL);
         
         globals.set("Chat", new ChatLib());
         globals.set("ServerEvent", new EventTable());
@@ -62,6 +69,17 @@ public class ScriptLoader {
         globals.set("PlayerUtil", new PlayerUtil());
         globals.set("Command", new CommandLib(fileName));
         globals.set("SQL", dataLib);
+        globals.set("Color", ColorUtils.Color());
+        globals.set("Vector", new VectorFactory());
+        globals.set("Scoreboard", new ScoreboardFactory());
+
+        LuaValue pkg = globals.get("package");
+
+        String scriptsPatch = scriptsFolder.getAbsolutePath() + "/?.lua";
+        String addonsPath = addonsFolder.getAbsolutePath() + "/?/init.lua";
+
+        pkg.set("path", LuaValue.valueOf(scriptsPatch + ";" + addonsPath));
+        pkg.set("cpath", LuaValue.valueOf(""));
     }
 
     /**
@@ -143,5 +161,7 @@ public class ScriptLoader {
             loadedScript.call();
             allGlobals.put(fileName, globals);
         }
+
+        Bukkit.getScheduler().runTask(mainPlugin, () -> CommandLib.refreshAllPlayerCommands());
     }
 }

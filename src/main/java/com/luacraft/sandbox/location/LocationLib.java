@@ -2,10 +2,15 @@ package com.luacraft.sandbox.location;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
+import org.bukkit.inventory.ItemStack;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
+
+import com.luacraft.sandbox.entity.ItemLib;
+import com.luacraft.sandbox.item.ItemStackLib;
 
 public class LocationLib extends LuaTable {
     private final Location location;
@@ -63,6 +68,17 @@ public class LocationLib extends LuaTable {
                 location.getBlock().setType(material);
 
                 return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("DropItem"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue itemstack) {
+                ItemStack stack = ((ItemStackLib) itemstack).getItemStack();
+
+                Item droppedItem = location.getWorld().dropItem(location, stack);
+
+                return new ItemLib(droppedItem);
             }
         });
     }

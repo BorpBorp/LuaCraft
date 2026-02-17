@@ -1,49 +1,21 @@
 package com.luacraft.sandbox.entity;
 
 import org.bukkit.Location;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.entity.Entity;
+import org.bukkit.util.Vector;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
 
-import com.luacraft.sandbox.inventory.EquipmentLib;
-import com.luacraft.sandbox.inventory.InventoryLib;
 import com.luacraft.sandbox.location.LocationLib;
+import com.luacraft.sandbox.velocity.VectorLib;
 
 public class EntityLib extends LuaTable {
-    public EntityLib(LivingEntity entity) {
-        rawset(LuaValue.valueOf("GetHealth"), new ZeroArgFunction() {
-            public LuaValue call() {
-                return LuaValue.valueOf(entity.getHealth());
-            }
-        });
+    private final Entity entity;
 
-        rawset(LuaValue.valueOf("SetHealth"), new OneArgFunction() {
-            public LuaValue call(LuaValue health) {
-                double newHealth = health.todouble();
-
-                entity.setHealth(newHealth);
-
-                return LuaValue.NIL;
-            }
-        });
-
-        rawset(LuaValue.valueOf("GetName"), new ZeroArgFunction() {
-            public LuaValue call() {
-                return LuaValue.valueOf(entity.getName());
-            } 
-        });
-
-        rawset(LuaValue.valueOf("Equipment"), new EquipmentLib(entity.getEquipment()));
-
-        if (entity instanceof InventoryHolder) {
-            Inventory inv = ((InventoryHolder) entity).getInventory();
-            rawset(LuaValue.valueOf("Inventory"), new InventoryLib(inv));
-        }
-
+    public EntityLib(Entity entity) {
+        this.entity = entity;
         rawset(LuaValue.valueOf("GetLocation"), new ZeroArgFunction() {
             @Override
             public LuaValue call() {
@@ -61,5 +33,36 @@ public class EntityLib extends LuaTable {
                 return LuaValue.NIL;
             }
         });
+
+        rawset(LuaValue.valueOf("SetGlow"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue glow) {
+                entity.setGlowing(glow.toboolean());
+
+                return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("SetVelocity"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue velocity) {
+                Vector vel = ((VectorLib) velocity).getVector();
+
+                entity.setVelocity(vel);
+
+                return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("GetVelocity"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                return new VectorLib(entity.getVelocity());
+            }
+        });
+    }
+
+    public Entity getEntity() {
+        return entity;
     }
 }

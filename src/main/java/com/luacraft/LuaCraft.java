@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -34,6 +35,10 @@ public class LuaCraft extends JavaPlugin {
 
         RegisterListeners.registerListeners(this, allGlobals);
 
+        int pluginId = 29491;
+        @SuppressWarnings("unused")
+        Metrics metrics = new Metrics(this, pluginId);
+
         pluginFolder = this.getDataFolder();
         pluginScriptsFolder = new File(pluginFolder, "scripts");
         pluginAddonsFolder = new File(pluginFolder,  "addons");
@@ -42,8 +47,6 @@ public class LuaCraft extends JavaPlugin {
         ScriptLoader.passDataLib(dataLib);
         
         Bukkit.getScheduler().runTaskTimer(plugin, () -> dataLib.flush(), 1200L, 1200L);
-
-        SQLiteLib.initialize(pluginDataFile.getAbsolutePath());
 
         if (!pluginScriptsFolder.exists()) {
             pluginScriptsFolder.mkdirs();
@@ -59,7 +62,10 @@ public class LuaCraft extends JavaPlugin {
             Bukkit.getLogger().info("Addons folder already exists, skipping...");
         }
 
+        SQLiteLib.initialize(pluginDataFile.getAbsolutePath());
+
         ScriptLoader.setScriptsFolder(pluginScriptsFolder, this);
+        ScriptLoader.setAddonsFolder(pluginAddonsFolder);
 
         try {
             ScriptLoader.loadAllScripts(allGlobals);

@@ -37,4 +37,8 @@ public class ItemStackLib extends LuaTable {
            } 
         });
     }
+
+    public ItemStack getItemStack() {
+        return stack;
+    }
 }

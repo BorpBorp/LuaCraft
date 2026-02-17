@@ -11,7 +11,7 @@ import org.luaj.vm2.lib.ZeroArgFunction;
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 
-public class VillagerLib extends EntityLib  {
+public class VillagerLib extends LivingEntityLib  {
     public VillagerLib(Villager villager) {
         super(villager);
 
