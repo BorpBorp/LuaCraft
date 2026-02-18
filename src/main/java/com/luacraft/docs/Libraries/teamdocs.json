@@ -1,0 +1,76 @@
+{
+    "SetColor": {
+        "Category": "Team",
+        "Description": "Sets the color of the team from one of the 16 supported colors: black, dark_blue, dark_green, dark_aqua, dark_red, dark_purple, gold, gray, dark_gray, blue, green, aqua, red, light_purple, yellow, white",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Color"]
+    },
+
+    "AddPlayer": {
+        "Category": "Team",
+        "Description": "Adds a player into the team",
+        "ArgumentTypes": ["Player"],
+        "Arguments": ["Player"]
+    },
+
+    "AddEntity": {
+        "Category": "Team",
+        "Description": "Adds an entity into the team",
+        "ArgumentTypes": ["Entity"],
+        "Arguments": ["Entity"]
+    },
+
+    "RemoveEntity": {
+        "Category": "Team",
+        "Description": "Removes an entity from the team",
+        "ArgumentTypes": ["Entity"],
+        "Arguments": ["Entity"]
+    },
+
+    "RemovePlayer": {
+        "Category": "Team",
+        "Description": "Removes a player from the team",
+        "ArgumentTypes": ["Player"],
+        "Arguments": ["Player"]
+    },
+
+    "Remove": {
+        "Category": "Team",
+        "Description": "Removes the team from the server"
+    },
+
+    "SetPrefix": {
+        "Category": "Team",
+        "Description": "Sets the prefix of the team",
+        "ArgumentTypes": ["Component"],
+        "Arguments": ["Prefix"]
+    },
+
+    "GetPrefix": {
+        "Category": "Team",
+        "Description": "Returns the prefix of the team",
+        "ReturnType": "Component",
+        "Returns": "Prefix"
+    },
+
+    "SetSuffix": {
+        "Category": "Team",
+        "Description": "Sets the suffix of the team",
+        "ArgumentTypes": ["Component"],
+        "Arguments": ["Suffix"]
+    },
+
+    "GetSuffix": {
+        "Category": "Team",
+        "Description": "Returns the suffix of the team",
+        "ReturnType": "Component",
+        "Returns": "Suffix"
+    },
+
+    "SetOption": {
+        "Category": "Team",
+        "Description": "Sets the option for the team Argument 1: NAME_TAG_VISIBILITY, DEATH_MESSAGE_VISIBILITY, COLLISION_RULE Argument 2: ALWAYS, NEVER, HIDE_FOR_OTHER_TEAMS, HIDE_FOR_OWN_TEAM",
+        "ArgumentTypes": ["String", "String"],
+        "Arguments": ["Option", "Value"]
+    }
+}

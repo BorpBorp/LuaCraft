@@ -1,0 +1,43 @@
+{
+    "SetMainHand": {
+        "Category": "Equipment",
+        "Description": "Set the item in the entity mainhand",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    },
+
+    "SetOffHand": {
+        "Category": "Equipment",
+        "Description": "Set the item in the entity offhand",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    },
+
+    "SetHelmet": {
+        "Category": "Equipment",
+        "Description": "Set the entity helmet",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    },
+
+    "SetChestplate": {
+        "Category": "Equipment",
+        "Description": "Set the entity chestplate",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    },
+
+    "SetLeggings": {
+        "Category": "Equipment",
+        "Description": "Set the entity leggings",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    },
+
+    "SetBoots": {
+        "Category": "Equipment",
+        "Description": "Set the entity boots",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    }
+}

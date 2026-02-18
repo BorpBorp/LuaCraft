@@ -1,0 +1,27 @@
+{
+    "GetHealth": {
+        "Category": "LivingEntity",
+        "Description": "Get the health of a Living Entity (in hearts)",
+        "ReturnType": "Number",
+        "Returns": "Health"
+    },
+
+    "SetHealth": {
+        "Category": "LivingEntity",
+        "Description": "Set the health of a Living Entity (in hearts)",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["NewLocation"]
+    },
+
+    "GetName": {
+        "Category": "LivingEntity",
+        "Description": "Get the name of a Living Entity",
+        "ReturnType": "String",
+        "Returns": "Name"
+    },
+
+    "Equipment": {
+        "Category": "LivingEntity",
+        "Description": "An accessor object used to interact with the Living Entity Equipment. This is not a function."
+    }
+}

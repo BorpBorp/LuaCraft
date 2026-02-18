@@ -9,6 +9,7 @@ import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
 
 import com.luacraft.sandbox.component.ComponentLib;
+import com.luacraft.sandbox.component.LuaComponent;
 import com.luacraft.sandbox.util.ComponentUtils;
 
 import io.papermc.paper.scoreboard.numbers.NumberFormat;
@@ -66,7 +67,9 @@ public class ObjectiveLib extends LuaTable {
         rawset(LuaValue.valueOf("GetDisplayName"), new ZeroArgFunction() {
             @Override
             public LuaValue call() {
-                return new ComponentLib(objective.displayName());
+                LuaComponent holder = new LuaComponent(objective.displayName());
+
+                return new ComponentLib(holder.getComponent());
             }
         });
 

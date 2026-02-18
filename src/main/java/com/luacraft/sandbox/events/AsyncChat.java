@@ -15,6 +15,7 @@ import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.ZeroArgFunction;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
+import com.luacraft.sandbox.component.ComponentLib;
 import com.luacraft.sandbox.component.LuaComponent;
 import com.luacraft.sandbox.entity.PlayerLib;
 import com.luacraft.sandbox.util.ComponentUtils;
@@ -66,7 +67,9 @@ public class AsyncChat implements Listener {
             LuaFunction getMessage = new ZeroArgFunction() {
                 @Override
                 public LuaValue call() {
-                   return CoerceJavaToLua.coerce(new LuaComponent(event.message()));
+                    LuaComponent holder = new LuaComponent(player.displayName());
+                    
+                    return new ComponentLib(holder.getComponent());
                 }
             };
 

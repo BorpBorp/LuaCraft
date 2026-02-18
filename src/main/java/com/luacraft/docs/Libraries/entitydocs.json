@@ -1,0 +1,36 @@
+{
+    "GetLocation": {
+        "Category": "Entity",
+        "Description": "Get the location of an entity",
+        "ReturnType": "Location",
+        "Returns": "EntityLocation"
+    },
+
+    "Teleport": {
+        "Category": "Entity",
+        "Description": "Teleport an entity to a new location",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["NewLocation"]
+    },
+
+    "SetGlow": {
+        "Category": "Entity",
+        "Description": "Set the glowing state of an entity",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["GlowState"]
+    },
+
+    "SetVelocity": {
+        "Category": "Entity",
+        "Description": "Set the velocity of an entity",
+        "ArgumentTypes": ["Vector"],
+        "Arguments": ["NewVelocity"]
+    },
+
+    "GetVelocity": {
+        "Category": "Entity",
+        "Description": "Get the velocity of an entity",
+        "ReturnType": "Vector",
+        "Returns": "EntityVelocity"
+    }
+}

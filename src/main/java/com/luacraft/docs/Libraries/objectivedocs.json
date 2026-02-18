@@ -1,0 +1,38 @@
+{
+    "SetDisplaySlot": {
+        "Category": "Objective",
+        "Description": "Sets where the objective should display (BELOW_NAME, TAB_LIST, SIDEBAR)",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["DisplaySlot"]
+    },
+
+    "SetNumberFormat": {
+        "Category": "Objective",
+        "Description": "Set the number format for the objective, if no value is specified it will default to its default style (extra styles: blank)",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["NumberFormat"]
+    },
+
+    "SetDisplayName": {
+        "Category": "Objective",
+        "Description": "Sets the name of the objective",
+        "ArgumentTypes": ["Component"],
+        "Arguments": ["DisplayName"]
+    },
+
+    "GetDisplayName": {
+        "Category": "Objective",
+        "Description": "Gets the display name of the component",
+        "ReturnType": "Component",
+        "Returns": "DisplayName"
+    },
+
+    "GetScore": {
+        "Category": "Objective",
+        "Description": "Gets the score that is attached to the Objective",
+        "ArgumentTypes": ["String"],
+        "Arguments:": ["Name"],
+        "ReturnType": "Score",
+        "Returns": "Score"
+    }
+}

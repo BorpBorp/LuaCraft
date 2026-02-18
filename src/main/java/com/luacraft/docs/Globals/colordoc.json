@@ -1,0 +1,7 @@
+{
+    "Color": {
+        "Description": "Creates a new RGB Color object",
+        "ArgumentTypes": ["Number", "Number", "Number"],
+        "Arguments": ["R", "G", "B"]
+    }
+}

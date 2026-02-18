@@ -1,0 +1,22 @@
+{
+    "NewObjective": {
+        "Category": "Scoreboard",
+        "Description": "Creates a new objective attached to the scoreboard",
+        "ArgumentTypes": ["String", "Component"],
+        "Arguments": ["ID", "DisplayName"]
+    },
+
+    "AddToPlayer": {
+        "Category": "Scoreboard",
+        "Description": "Attaches the scoreboard to a player",
+        "ArgumentTypes": ["Player"],
+        "Arguments": ["Player"]
+    },
+
+    "NewTeam": {
+        "Category": "Scoreboard",
+        "Description": "Creates a new team attached to the scoreboard",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["name"]
+    }
+}

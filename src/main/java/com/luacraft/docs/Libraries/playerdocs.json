@@ -25,5 +25,52 @@
         "Description": "Set the Display Name of the player",
         "ArgumentTypes": ["Component|String"],
         "Arguments": ["DisplayName"]
+    },
+
+    "GetPrefix": {
+        "Category": "Player",
+        "Description": "Get the player's Vault Prefix",
+        "ReturnType": "Component",
+        "Returns": "Prefix"
+    },
+
+    "SetPrefix": {
+        "Category": "Player",
+        "Description": "Set the player's Vault Prefix",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Prefix"]
+    },
+
+    "GetSuffix": {
+        "Category": "Player",
+        "Description": "Get the player's Vault Suffix",
+        "ReturnType": "Component",
+        "Returns": "Suffix"
+    },
+
+    "SetSuffix": {
+        "Category": "Player",
+        "Description": "Set the player's Vault Suffix",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Suffix"]
+    },
+
+    "GetUUID": {
+        "Category": "Player",
+        "Description": "Get the player's uuid",
+        "ReturnType": "String",
+        "Returns": "UUID"
+    },
+
+    "GetAllPlayers": {
+        "Category": "Player",
+        "Description": "Get all online players on the server",
+        "ReturnType": "Table",
+        "Returns": "OnlinePlayers"
+    },
+
+    "Inventory": {
+        "Category": "Player",
+        "Description": "An accessor object used to interact with the player's inventory. This is not a function."
     }
 }

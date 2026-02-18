@@ -1,0 +1,15 @@
+{
+    "IsArmor": {
+        "Category": "EquipmentSlot",
+        "Description": "Returns whether this equipment slot is armor slot",
+        "ReturnType": "Boolean",
+        "Returns": "IsArmor"
+    },
+    
+    "IsHand": {
+        "Category": "EquipmentSlot",
+        "Description": "Returns whether this equipment slot is a hand slot",
+        "ReturnType": "Boolean",
+        "Returns": "IsHand"
+    }
+}

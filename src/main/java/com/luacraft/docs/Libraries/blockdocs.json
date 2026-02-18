@@ -1,0 +1,38 @@
+{
+    "GetType": {
+        "Category": "Block",
+        "Description": "Returns the matieral type of the block",
+        "ReturnType": "String",
+        "Returns": "Type"
+    },
+
+    "GetName": {
+        "Category": "Block",
+        "Description": "Returns the pretty name of the block",
+        "ReturnType": "String",
+        "Returns": "Name"
+    },
+
+    "IsType": {
+        "Category": "Block",
+        "Description": "Checks if the material types of the two blocks are the same",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Type"],
+        "ReturnType": "Boolean",
+        "Returns": "IsType"
+    },
+
+    "SetBlock": {
+        "Category": "Block",
+        "Description": "Sets the block to a new block",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Type"]
+    },
+
+    "GetLocation": {
+        "Category": "Block",
+        "Description": "Returns the location of the block",
+        "ReturnType": "Location",
+        "Returns": "BlockLocation"
+    }
+}

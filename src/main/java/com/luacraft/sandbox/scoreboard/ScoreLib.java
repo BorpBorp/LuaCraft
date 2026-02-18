@@ -10,6 +10,7 @@ import com.luacraft.sandbox.util.ComponentUtils;
 
 import io.papermc.paper.scoreboard.numbers.NumberFormat;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.Style;
 
 public class ScoreLib extends LuaTable {
     private final Score score;
@@ -36,6 +37,8 @@ public class ScoreLib extends LuaTable {
                         Component newComp = ComponentUtils.luaValueToComponent(component);
                         score.numberFormat(NumberFormat.fixed(newComp));
                         break;
+                    default:
+                        score.numberFormat(NumberFormat.styled(Style.empty()));
                 }
 
                 return LuaValue.NIL;

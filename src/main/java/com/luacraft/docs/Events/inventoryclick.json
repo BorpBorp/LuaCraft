@@ -1,0 +1,76 @@
+{
+    "OnInventoryClick": {
+        "Description": "Called whenever a player clicks in an inventory",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who interacted with the inventory",
+                "Type": "Player"
+            },
+            "Inventory": {
+                "Description": "The inventory interacted with",
+                "Type": "Inventory"
+            }
+        },
+        "AvailableFunctions": {
+            "GetClickType": {
+                "Description": "Returns the click type",
+                "ReturnType": "String",
+                "Returns": "ClickType"
+            },
+            "GetClickedInventory": {
+                "Description": "Returns the inventory that the click was in",
+                "ReturnType": "Inventory",
+                "Returns": "ClickedInventory"
+            },
+            "GetSlotItem": {
+                "Description": "Returns the item in the clicked slot",
+                "ReturnType": "Itemstack",
+                "Returns": "SlotItem"
+            },
+            "GetCursorItem": {
+                "Description": "Returns the item in the cursor",
+                "ReturnType": "Itemstack",
+                "Returns": "CursorItem"
+            },
+            "GetHotbarbutton": {
+                "Description": "Returns the hotbar button that was pressed",
+                "ReturnType": "Number",
+                "Returns": "HotbarButton"
+            },
+            "GetSlot": {
+                "Description": "Returns the slot that was clicked",
+                "ReturnType": "Number",
+                "Returns": "ClickedSlot"
+            },
+            "GetTitle": {
+                "Description": "Returns the title of the inventory",
+                "ReturnType": "Component",
+                "Returns": "Title"
+            },
+            "IsLeftClick": {
+                "Description": "Returns whether the click type was LeftClick",
+                "ReturnType": "Boolean",
+                "Returns": "LeftClick"
+            },
+            "IsRightClick": {
+                "Description": "Returns whether the click type was RightClick",
+                "ReturnType": "Boolean",
+                "Returns": "RightClick"
+            },
+            "IsShiftRightClick": {
+                "Description": "Returns whether the click type was ShiftRightClick",
+                "ReturnType": "Boolean",
+                "Returns": "ShiftRightClick"
+            },
+            "ShouldInteract": {
+                "Description": "Set whether the player should be able to interact with the inventory",
+                "Parameters": {
+                    "name": "Should",
+                    "types": ["Boolean"]
+                }
+            }
+        }
+    }
+}

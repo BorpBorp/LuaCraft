@@ -1,5 +1,5 @@
 {
-    "onPlayerJoin": {
+    "OnPlayerJoin": {
         "Description": "Called when a player joins the server",
         "Arguments": ["event"],
         "ArgumentTypes": ["EventObject"],

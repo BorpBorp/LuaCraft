@@ -1,0 +1,33 @@
+{
+    "OnBlockBreak": {
+        "Description": "Called whenever a player breaks a block",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who broke a block",
+                "Type": "Player"
+            },
+            "Block": {
+                "Description": "The block that was broken",
+                "Type": "Block"
+            }
+        },
+        "AvailableFunctions": {
+            "ShouldBreak": {
+                "Description": "Set whether the block should break or not",
+                "Parameters": {
+                    "name": "ShouldBreak",
+                    "types": ["Boolean"]
+                }
+            },
+            "ShouldDropItems": {
+                "Description": "Set whether the block will drop items or not",
+                "Parameters": {
+                    "name": "ShouldDropItems",
+                    "types": ["Boolean"]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+{
+    "GetX": {
+        "Category": "Location",
+        "Description": "Returns the X value of the location",
+        "ReturnType": "Number",
+        "Returns": "X"
+    },
+
+    "GetY": {
+        "Category": "Location",
+        "Description": "Returns the Y value of the location",
+        "ReturnType": "Number",
+        "Returns": "Y"
+    },
+
+    "GetZ": {
+        "Category": "Location",
+        "Description": "Returns the Z value of the location",
+        "ReturnType": "Number",
+        "Returns": "Z"
+    },
+
+    "DistanceTo": {
+        "Category": "Location",
+        "Description": "Returns the distance to another location",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["OtherLocation"]
+    },
+
+    "DistanceToSquared": {
+        "Category": "Location",
+        "Description": "Returns the squared distance to another location",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["OtherLocation"]
+    },
+
+    "SetBlockAtLocation": {
+        "Category": "Location",
+        "Description": "Sets the block at the specific location",
+        "ArgumentTypes": ["Block"],
+        "Arguments": ["NewBlock"]
+    },
+
+    "DropItem": {
+        "Category": "Location",
+        "Description": "spawns an item entity of the itemstack at the specific location",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "GetX": {
+        "Category": "Vector",
+        "Description": "Returns the X value of the vector",
+        "ReturnType": "Number",
+        "Returns": "X"
+    },
+
+    "GetY": {
+        "Category": "Vector",
+        "Description": "Returns the Y value of the vector",
+        "ReturnType": "Number",
+        "Returns": "Y"
+    },
+
+    "GetZ": {
+        "Category": "Vector",
+        "Description": "Returns the Z value of the vector",
+        "ReturnType": "Number",
+        "Returns": "Z"
+    }
+}

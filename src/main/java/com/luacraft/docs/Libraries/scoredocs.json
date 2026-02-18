@@ -1,0 +1,15 @@
+{
+    "SetScore": {
+        "Category": "Score",
+        "Description": "Sets the score of the score object",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["NewScore"]
+    },
+
+    "SetNumberFormat": {
+        "Category": "Score",
+        "Description": "Set the number format for the score, if no value is specified it will default to its default style. If the style is fixed, you can pass a custom component to it to display text (extra styles: fixed)",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["NumberFormat"]
+    }
+}

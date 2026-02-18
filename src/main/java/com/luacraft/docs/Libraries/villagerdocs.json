@@ -1,0 +1,15 @@
+{
+    "GetVillagerType": {
+        "Category": "Villager",
+        "Description": "Get the Villagers type",
+        "ReturnType": "String",
+        "Returns": "VillagerType"
+    },
+
+    "SetVillagerType": {
+        "Category": "Villager",
+        "Description": "Set the Villagers type",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["VillagerType"]
+    }
+}

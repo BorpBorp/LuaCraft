@@ -1,0 +1,13 @@
+{
+    "Compare": {
+        "Category": "Component",
+        "Description": "Compares the component with the second",
+        "ArgumentTypes": ["Component"],
+        "Arguments": ["OtherComponent"]
+    },
+
+    "ToString": {
+        "Category": "Component",
+        "Description": "Converts the component into a plain string"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "SetSaddle": {
+        "Category": "Player",
+        "Description": "Set whether the animal has a saddle (Currently works for Pig only)",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["SetSaddle"]
+    }
+}

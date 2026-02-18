@@ -1,0 +1,14 @@
+{
+    "SetName": {
+        "Category": "Itemstack",
+        "Description": "Sets the name of the itemstack",
+        "ArgumentTypes": ["Component"],
+        "Arguments": ["Name"]
+    },
+    "GetName": {
+        "Category": "Itemstack",
+        "Description": "Gets the name of the itemstack",
+        "ReturnType": "Component",
+        "Returns": "Name"
+    }
+}

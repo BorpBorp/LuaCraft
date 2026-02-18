@@ -1,0 +1,55 @@
+{
+    "GiveItem": {
+        "Category": "Inventory",
+        "Description": "Gives an item to the specified inventory",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    },
+
+    "SetItem": {
+        "Category": "Inventory",
+        "Description": "Sets an item at the specificed slot in the inventory",
+        "ArgumentTypes": ["Number", "Itemstack"],
+        "Arguments": ["Slot", "Item"]
+    },
+
+    "Open": {
+        "Category": "Inventory",
+        "Description": "Opens the inventory to the specified player",
+        "ArgumentTypes": ["Player"],
+        "Arguments": ["Player"]
+    },
+
+    "UpdateInventory": {
+        "Category": "Inventory",
+        "Description": "Updates the inventory to display new information"
+    },
+
+    "SetMetaTag": {
+        "Category": "Inventory",
+        "Description": "Sets the meta tag of the inventory",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["MetaTag"]
+    },
+
+    "GetMetaTag": {
+        "Category": "Inventory",
+        "Description": "Gets the meta tag of the inventory",
+        "ReturnType": "String",
+        "Returns": "MetaTag"
+    },
+
+    "GetSize": {
+        "Category": "Inventory",
+        "Description": "Gets the size of the inventory",
+        "ReturnType": "Number",
+        "Returns": "Size"
+    },
+
+    "GetSlots": {
+        "Category": "Inventory",
+        "Description": "Gets the slots of the inventory that contain an item (Expected to include empty slots in the future)",
+        "ReturnType": "Table",
+        "Returns": "Slots"
+    }
+}

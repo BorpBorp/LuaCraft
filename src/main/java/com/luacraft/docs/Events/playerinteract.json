@@ -1,0 +1,76 @@
+{
+    "": {
+        "Description": "",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who interacted",
+                "Type": "Player"
+            }
+        },
+        "AvailableFunctions": {
+            "GetActionType": {
+                "Description": "Returns the type of the action that was performed",
+                "ReturnType": "String",
+                "Returns": "ActionType"
+            },
+            "GetClickedBlock": {
+                "Description": "Returns the block that was interacted with",
+                "ReturnType": "Block",
+                "Returns": "ClickedBlock"
+            },
+            "GetHand": {
+                "Description": "Returns the hand used to interact",
+                "ReturnType": "EquipmentSlot",
+                "Returns": "Hand"
+            },
+            "GetInteractionPoint": {
+                "Description": "Returns the exact location that the interaction occured at",
+                "ReturnType": "Location",
+                "Returns": "InteractionPoint"
+            },
+            "GetItem": {
+                "Description": "Returns the item used in the interaction event",
+                "ReturnType": "Itemstack",
+                "Returns": "Item"
+            },
+            "InvolvedBlock": {
+                "Description": "Returns if a block was used in the interaction",
+                "ReturnType": "Boolean",
+                "Returns": "Involved"
+            },
+            "InvolvedItem": {
+                "Description": "Returns if a item was used in the interaction",
+                "ReturnType": "Boolean",
+                "Returns": "Involved"
+            },
+            "IsBlockInHand": {
+                "Description": "Returns if the interaction was a block placement event",
+                "ReturnType": "Boolean",
+                "Returns": "BlockPlacement"
+            },
+            "ShouldInteract": {
+                "Description": "Sets whether the playee should interact or not",
+                "Parameters": {
+                    "name": "Should",
+                    "types": ["Boolean"]
+                }
+            },
+            "ShouldUseInteractedBlock": {
+                "Description": "Sets whether the player should use the interacted block or not (ALLOW, DENY)",
+                "Parameters": {
+                    "name": "Should",
+                    "types": ["String"]
+                }
+            },
+            "ShouldUseItemInHand": {
+                "Description": "Sets whether the player should use the item in their hand (ALLOW, DENY)",
+                "Parameters": {
+                    "name": "Should",
+                    "types": ["String"]
+                }
+            }
+        }
+    }
+}

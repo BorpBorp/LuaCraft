@@ -1,0 +1,34 @@
+{
+    "OnAsyncChat": {
+        "Description": "Called whenever a player attempts to chat",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who sent a message",
+                "Type": "Player"
+            }
+        },
+        "AvailableFunctions": {
+            "GetMessage": {
+                "Description": "Returns the chat message sent",
+                "ReturnType": "Component",
+                "Returns": "Message"
+            },
+            "SetChatFormat": {
+                "Description": "Set the chat format for everyone",
+                "Parameters": {
+                    "name": "ChatFormat",
+                    "types": ["Component"]
+                }
+            },
+            "ShouldChat": {
+                "Description": "Sets whether the player should chat or not",
+                "Parameters": {
+                    "name": "Should",
+                    "types": ["Boolean"]
+                }
+            }
+        }
+    }
+}

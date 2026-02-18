@@ -1,0 +1,29 @@
+{
+    "SetItemStack": {
+        "Category": "ItemEntity",
+        "Description": "Set the Itemstack of an Item Entity in the world",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["NewItemstack"]
+    },
+
+    "GetItemStack": {
+        "Category": "ItemEntity",
+        "Description": "Get the Itemstack of an Item Entity in the world",
+        "ReturnType": "Itemstack",
+        "Returns": "Itemstack"
+    },
+
+    "SetPickupDelay": {
+        "Category": "ItemEntity",
+        "Description": "Set the pickup delay of an Item Entity in the world",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["NewPickupDelay"]
+    },
+
+    "GetPickupDelay": {
+        "Category": "ItemEntity",
+        "Description": "Get the pickup delay of an Item Entity in the world",
+        "ReturnType": "Number",
+        "Returns": "PickupDelay"
+    }
+}

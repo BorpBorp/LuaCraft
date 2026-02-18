@@ -1,0 +1,54 @@
+{
+    "OnBlockPlace": {
+        "Description": "Called whenever a player places a block",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who placed a block",
+                "Type": "Player"
+            }
+        },
+        "AvailableFunctions": {
+            "CanBuild": {
+                "Description": "Returns whether the player can build there or not",
+                "ReturnType": "Boolean",
+                "Returns": "CanBuild"
+            },
+            "GetBlockAgainst": {
+                "Description": "Returns the block that the event block was placed against",
+                "ReturnType": "Block",
+                "Returns": "BlockAgainst"
+            },
+            "GetBlockPlaced": {
+                "Description": "Returns the event block that was placed",
+                "ReturnType": "Block",
+                "Returns": "BlockPlaced"
+            },
+            "GetHand": {
+                "Description": "Get the hand that placed the block",
+                "ReturnType": "EquipmentSlot",
+                "Returns": "Hand"
+            },
+            "GetItemInHand": {
+                "Description": "Get the itemstack that the player is holding when they placed the block",
+                "ReturnType": "Itemstack",
+                "Returns": "Item"
+            },
+            "ShouldBuild": {
+                "Description": "Set whether the place can build here or not",
+                "Parameters": {
+                    "name": "ShouldBuild",
+                    "types": ["Boolean"]
+                }
+            },
+            "ShouldPlace": {
+                "Description": "Set whether the player can place a block or not",
+                "Parameters": {
+                    "name": "ShouldPlace",
+                    "types": ["Boolean"]
+                }
+            }
+        }
+    }
+}

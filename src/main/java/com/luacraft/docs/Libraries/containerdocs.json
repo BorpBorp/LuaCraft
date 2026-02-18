@@ -1,0 +1,13 @@
+{
+    "IsDoubleChest": {
+        "Category": "Container",
+        "Description": "Check if the container is a double chest",
+        "ReturnType": "Boolean",
+        "Returns": "IsDoubleChest"
+    },
+
+    "Inventory": {
+        "Category": "Container",
+        "Description": "An accessor object used to interact with the container's inventory. This is not a function."
+    }
+}
