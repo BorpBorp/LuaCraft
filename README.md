@@ -1,3 +1,6 @@
+<img width="1536" height="355" alt="image" src="https://github.com/user-attachments/assets/8a7e449b-1991-4b13-9891-5bf3ff9097fd" />
+
+
 # LuaCraft
 LuaCraft embeds LuaJ into Paper/Bukkit servers, providing developers with a lightweight, fast scripting layer without the complexity of full plugin development.
 <br>
