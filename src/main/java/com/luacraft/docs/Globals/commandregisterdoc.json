@@ -1,56 +1,58 @@
 {
-  "name": "Command.Register",
-  "description": "Registers a new command with the server",
-  "parameters": [
-    {
-      "name": "config",
-      "type": "table",
-      "description": "Command configuration table",
-      "required": true,
-      "properties": [
-        {
-          "name": "name",
-          "type": "string",
-          "description": "The command name (without slash)",
-          "required": true
-        },
-        {
-          "name": "description",
-          "type": "string",
-          "description": "Description of what the command does",
-          "required": true
-        },
-        {
-          "name": "usage",
-          "type": "string",
-          "description": "Usage info shown to players",
-          "required": true
-        },
-        {
-          "name": "permission",
-          "type": "string",
-          "description": "Permission node required to use command (* for all)",
-          "required": true
-        },
-        {
-          "name": "onExecute",
-          "type": "function",
-          "description": "Callback function executed when the command is run",
-          "required": true,
-          "parameters": [
+    "Command": {
+        "name": "Command.Register",
+        "description": "Registers a new command with the server",
+        "parameters": [
             {
-              "name": "sender",
-              "type": "CommandSender",
-              "description": "The player or console who executed the command"
-            },
-            {
-              "name": "args",
-              "type": "table",
-              "description": "Array of command arguments"
+                "name": "config",
+                "type": "table",
+                "description": "Command configuration table",
+                "required": true,
+                "properties": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "description": "The command name (without slash)",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "type": "string",
+                        "description": "Description of what the command does",
+                        "required": true
+                    },
+                    {
+                        "name": "usage",
+                        "type": "string",
+                        "description": "Usage info shown to players",
+                        "required": true
+                    },
+                    {
+                        "name": "permission",
+                        "type": "string",
+                        "description": "Permission node required to use command (* for all)",
+                        "required": true
+                    },
+                    {
+                        "name": "onExecute",
+                        "type": "function",
+                        "description": "Callback function executed when the command is run",
+                        "required": true,
+                        "parameters": [
+                            {
+                                "name": "sender",
+                                "type": "CommandSender",
+                                "description": "The player or console who executed the command"
+                            },
+                            {
+                                "name": "args",
+                                "type": "table",
+                                "description": "Array of command arguments"
+                            }
+                        ]
+                    }
+                ]
             }
-          ]
-        }
-      ]
+        ]
     }
-  ]
 }

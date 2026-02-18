@@ -1,6 +1,6 @@
 {
-    "": {
-        "Description": "",
+    "OnPlayerInteract": {
+        "Description": "Called when the player attempts to interact",
         "Arguments": ["event"],
         "ArgumentTypes": ["EventObject"],
         "EventObjects": {
