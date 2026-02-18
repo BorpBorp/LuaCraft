@@ -2,6 +2,51 @@
     "OnPlayerMove": {
         "Description": "Called when a player quits the server",
         "Arguments": ["event"],
-        "ArgumentTypes": ["EventObject"]
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The player who moved",
+                "Type": "Player"
+            }
+        },
+        "AvailableFunctions": {
+            "ShouldMove": {
+                "Description": "Sets whether the player should move or not",
+                "Parameters": {
+                    "name": "ShouldMove",
+                    "types": ["Boolean"]
+                }
+            },
+            "GetLastPosition": {
+                "Description": "Get the last position of the player before the movement",
+                "ReturnType": "Location",
+                "Returns": "LastPosition"
+            },
+            "HasChangedBlock": {
+                "Description": "Returns whether the player has changed blocks or not",
+                "ReturnType": "Boolean",
+                "Returns": "HasChangedBlock"
+            },
+            "HasChangedOrientation": {
+                "Description": "Returns whether the player has changed their orientation or not",
+                "ReturnType": "Boolean",
+                "Returns": "HasChangedOrientation"
+            },
+            "HasChangedPosition": {
+                "Description": "Returns whether the has changed their position or not",
+                "ReturnType": "Boolean",
+                "Returns": "HasChangedPosition"
+            },
+            "ExplicitHasChangedBlock": {
+                "Description": "Returns whether the player has explicitly changed blocks, ignoring world changes",
+                "ReturnType": "Boolean",
+                "Returns": "ExplicitHasChangedBlock"
+            },
+            "ExplicitHasChangedPosition": {
+                "Description": "Returns whether the player has changed poisiton, igonring world changes",
+                "ReturnType": "Boolean",
+                "Returns": "ExplicitHasChangedPosition"
+            }
+        }
     }
 }

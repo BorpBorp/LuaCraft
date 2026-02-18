@@ -1,5 +1,5 @@
 {
-    "Command": {
+    "Command.Register": {
         "name": "Command.Register",
         "description": "Registers a new command with the server",
         "parameters": [

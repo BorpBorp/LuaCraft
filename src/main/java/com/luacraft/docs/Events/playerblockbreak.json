@@ -27,6 +27,11 @@
                     "name": "ShouldDropItems",
                     "types": ["Boolean"]
                 }
+            },
+            "GetDrops": {
+                "Description": "Get the drops from the broken block",
+                "ReturnType": "Table",
+                "Returns": "Drops"
             }
         }
     }
