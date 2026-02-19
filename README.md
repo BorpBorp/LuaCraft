@@ -21,7 +21,7 @@ You can download the latest release of LuaCraft at the [Releases](https://github
 function ServerEvent.OnPlayerJoin(event)
    local player = event.player
    local white = "&#FFFFFF"
-   local component = Chat.ColoredString(white, "Hello world")
+   local component = Component(white, "Hello world")
 
    Chat.Broadcast(component)
 end
