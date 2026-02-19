@@ -4,5 +4,13 @@
         "Description": "Set the data to be stored in the SQLite Database. Supported things are String, Integer, Table, Component",
         "ArgumentTypes": ["String", "String", "Any"],
         "Arguments": ["UUID", "Key", "Value"]
+    },
+    "GetData": {
+        "Category": "SQL",
+        "Description": "Returns the data stored in the SQLite Database. It is retrieved once, then cached in server memory for faster access",
+        "ArgumentTypes": ["String", "String"],
+        "Arguments": ["UUID", "Key"],
+        "ReturnType": "Any",
+        "Returns": "Data"
     }
 }
