@@ -1,0 +1,8 @@
+{
+    "SetData": {
+        "Category": "SQL",
+        "Description": "Set the data to be stored in the SQLite Database. Supported things are String, Integer, Table, Component",
+        "ArgumentTypes": ["String", "String", "Any"],
+        "Arguments": ["UUID", "Key", "Value"]
+    }
+}

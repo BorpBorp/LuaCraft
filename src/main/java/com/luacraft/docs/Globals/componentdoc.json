@@ -1,7 +1,7 @@
 {
     "Component": {
         "Description": "Creates a new Component object that can be overloaded with as many arguments as needed. Listed arguments are accepted.",
-        "ArgumentTypes": ["Color", "Component", "String"],
-        "Arguments": ["Color", "Component", "String"]
+        "ArgumentTypes": ["Any"],
+        "Arguments": ["Any"]
     }
 }
