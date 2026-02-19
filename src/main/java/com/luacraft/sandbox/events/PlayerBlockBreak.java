@@ -1,5 +1,6 @@
 package com.luacraft.sandbox.events;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,15 +10,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaFunction;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
+import org.luaj.vm2.lib.ZeroArgFunction;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
 import com.luacraft.sandbox.block.BlockLib;
 import com.luacraft.sandbox.entity.PlayerLib;
+import com.luacraft.sandbox.item.ItemStackLib;
 
 public class PlayerBlockBreak implements Listener {
     private Map<String, Globals> allGlobals = new HashMap<>();
@@ -57,9 +61,26 @@ public class PlayerBlockBreak implements Listener {
                 }
             };
 
+            LuaFunction getItemDrops = new ZeroArgFunction() {
+                @Override
+                public LuaValue call() {
+                    Collection<ItemStack> drops = block.getDrops();
+
+                    LuaTable allDrops = new LuaTable();
+                    int index = 1;
+
+                    for (ItemStack drop : drops) {
+                        allDrops.set(index++, new ItemStackLib(drop));
+                    }
+
+                    return allDrops;
+                }
+            };
+
             LuaTable luaEvent = new LuaTable();
             luaEvent.set("ShouldBreak", shouldBreak);
             luaEvent.set("ShouldDropItems", shouldDropItems);
+            luaEvent.set("GetDrops", getItemDrops);
             luaEvent.set("Player", new PlayerLib(player));
             luaEvent.set("Block", new BlockLib(block));
             if (!function.isnil() && function.isfunction()) {
