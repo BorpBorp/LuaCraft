@@ -17,6 +17,7 @@ import org.luaj.vm2.lib.jse.JsePlatform;
 import com.luacraft.sandbox.chat.ChatLib;
 import com.luacraft.sandbox.command.CommandLib;
 import com.luacraft.sandbox.component.ComponentFactory;
+import com.luacraft.sandbox.component.MiniMessageFactory;
 import com.luacraft.sandbox.database.SQLiteLuaLib;
 import com.luacraft.sandbox.events.EventTable;
 import com.luacraft.sandbox.inventory.InventoryFactory;
@@ -64,6 +65,7 @@ public class ScriptLoader {
         globals.set("Itemstack", new ItemStackFactory());
         globals.set("Location", new LocationFactory());
         globals.set("Component", new ComponentFactory());
+        globals.set("MiniMessage", new MiniMessageFactory());
         globals.set("Inventory", new InventoryFactory());
         globals.set("Wait", WaitUtil.Wait(mainPlugin));
         globals.set("PlayerUtil", new PlayerUtil());

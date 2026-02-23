@@ -27,6 +27,17 @@ public class ScoreLib extends LuaTable {
             }
         });
 
+        rawset(LuaValue.valueOf("SetCustomName"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue displayName) {
+                Component customName = ComponentUtils.luaValueToComponent(displayName);
+
+                score.customName(customName);
+
+                return LuaValue.NIL;
+            }
+        });
+
         rawset(LuaValue.valueOf("SetNumberFormat"), new TwoArgFunction() {
             @Override
             public LuaValue call(LuaValue type, LuaValue component) {
