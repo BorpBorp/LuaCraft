@@ -19,7 +19,7 @@ You can download the latest release of LuaCraft at the [Releases](https://github
 # Example
 ```lua
 function ServerEvent.OnPlayerJoin(event)
-   local player = event.player
+   local player = event.Player
    local white = "&#FFFFFF"
    local component = Component(white, "Hello world")
 
