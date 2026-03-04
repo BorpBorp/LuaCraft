@@ -18,5 +18,12 @@
         "Description": "Creates a new team attached to the scoreboard",
         "ArgumentTypes": ["String"],
         "Arguments": ["name"]
+    },
+
+    "SetCustomName": {
+        "Category": "Scoreboard",
+        "Description": "Set the Custom Name of a scoreboard",
+        "ArgumentTypes": ["MiniMessage|Component|String"],
+        "Arguments": ["CustomName"]
     }
 }

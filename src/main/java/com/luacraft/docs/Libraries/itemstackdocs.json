@@ -5,10 +5,76 @@
         "ArgumentTypes": ["Component"],
         "Arguments": ["Name"]
     },
+
     "GetName": {
         "Category": "Itemstack",
         "Description": "Gets the name of the itemstack",
         "ReturnType": "Component",
         "Returns": "Name"
+    },
+
+    "SetLore": {
+        "Category": "Itemstack",
+        "Description": "Set the lore of the item. The table if passed can contain any valid type listed and will set the line that matches the index",
+        "ArgumentTypes": ["Table|Component|String|MiniMessage"],
+        "Arguments": ["Lore"]
+    },
+
+    "HasMetaData": {
+        "Category": "Itemstack",
+        "Description": "Returns whether the item contains the MetaData key",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Key"]
+    },
+
+    "SetMetaData": {
+        "Category": "Itemstack",
+        "Description": "Set the MetaData of the item",
+        "ArgumentTypes": ["String", "String|Number|Boolean"],
+        "Arguments": ["Key", "Value"]
+    },
+
+    "GetMetaData": {
+        "Category": "Itemstack",
+        "Description": "Get the MetaData value from the item",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Key"],
+        "ReturnType": "String|Number|Boolean",
+        "Returns": "Value"
+    },
+
+    "GetType": {
+        "Category": "Itemstack",
+        "Description": "Returns the items type",
+        "ReturnType": "String",
+        "Returns": "Type"
+    },
+
+    "SetFlags": {
+        "Category": "Itemstack",
+        "Description": "Set the items flags",
+        "ArgumentTypes": ["Table|String"],
+        "Arguments": ["Flag(s)"]
+    },
+
+    "Add": {
+        "Category": "Itemstack",
+        "Description": "Increase the itemstacks amount",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["Amount"]
+    },
+
+    "Subtract": {
+        "Category": "Itemstack",
+        "Description": "Decrease the itemstacks amount",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["Amount"]
+    },
+
+    "Unbreakable": {
+        "Category": "Itemstack",
+        "Description": "Set whether this item is unbreakable or not",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["Unbreakable"]
     }
 }

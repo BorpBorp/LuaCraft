@@ -9,6 +9,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaFunction;
@@ -70,7 +71,12 @@ public class PlayerInteract implements Listener {
             LuaFunction getItem = new ZeroArgFunction() {
                 @Override
                 public LuaValue call() {
-                    return new ItemStackLib(event.getItem());
+                    ItemStack item = event.getItem();
+                    if (item == null || item.getType().isAir()) {
+                        return LuaValue.NIL;
+                    }
+
+                    return new ItemStackLib(item);
                 }
             };
 

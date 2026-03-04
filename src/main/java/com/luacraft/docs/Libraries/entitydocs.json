@@ -32,5 +32,12 @@
         "Description": "Get the velocity of an entity",
         "ReturnType": "Vector",
         "Returns": "EntityVelocity"
+    },
+
+    "SetVisibleByDefault": {
+        "Category": "Entity",
+        "Description": "Set whether this entity is visible to players by default or not",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["IsVisible"]
     }
 }

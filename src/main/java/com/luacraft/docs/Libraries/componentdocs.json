@@ -9,5 +9,26 @@
     "ToString": {
         "Category": "Component",
         "Description": "Converts the component into a plain string"
+    },
+    
+    "Italics": {
+        "Category": "Component",
+        "Description": "Sets whether this Component should use italics or not",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["Should"]
+    },
+
+    "ClickEvent": {
+        "Category": "Component",
+        "Description": "Prepares the Click Event of the Component in the chat. The available types are url, command, suggestcommand",
+        "ArgumentTypes": ["String", "String"],
+        "Arguments": ["Type", "Value"]
+    },
+
+    "Colorize": {
+        "Category": "Component",
+        "Description": "A helper function to colorize functions that return uncolored Components/MiniMessage even though they should be colored",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["minimessage|component"]
     }
 }

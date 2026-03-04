@@ -1,0 +1,50 @@
+{
+    "SetText": {
+        "Category": "TextDisplay",
+        "Description": "Set the text of the text display entity",
+        "ArgumentTypes": ["String|Component|MiniMessage"],
+        "Arguments": ["Text"]
+    },
+
+    "SetShadowed": {
+        "Category": "TextDisplay",
+        "Description": "Set whether this text display entity is shadowed",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["IsShadowed"]
+    },
+
+    "SetSeeThrough": {
+        "Category": "TextDisplay",
+        "Description": "Set whether the text is see through or not",
+        "ArgumentTypes": ["Boolean"],
+        "Arguments": ["SeeThrough"]
+    },
+
+    "SetTextOpacity": {
+        "Category": "TextDisplay",
+        "Description": "Set the opacity of the text within a range from 0-255",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["OpacityValue"]
+    },
+
+    "SetLineWidth": {
+        "Category": "TextDisplay",
+        "Description": "Set the line width for the text display entity",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["LineWidth"]
+    },
+
+    "SetAlignment": {
+        "Category": "TextDisplay",
+        "Description": "Set the alignment of the text",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Alignment"]
+    },
+
+    "SetBackgroundColor": {
+        "Category": "TextDisplay",
+        "Description": "Set the background color of the text display entity",
+        "ArgumentTypes": ["Color"],
+        "Arguments": ["BackgroundColor"]
+    }
+}

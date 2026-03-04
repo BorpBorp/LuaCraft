@@ -13,6 +13,7 @@ import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaFunction;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
+import org.luaj.vm2.lib.ZeroArgFunction;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
 import com.luacraft.sandbox.entity.PlayerLib;
@@ -46,9 +47,17 @@ public class PlayerJoin implements Listener {
                 }
             };
 
+            LuaFunction hasPlayedBefore = new ZeroArgFunction() {
+                @Override
+                public LuaValue call() {
+                    return LuaValue.valueOf(player.hasPlayedBefore());
+                }
+            };
+
             LuaTable luaEvent = new LuaTable();
             luaEvent.set("SetJoinMessage", setJoinMessage);
             luaEvent.set("Player", new PlayerLib(player));
+            luaEvent.set("HasPlayedBefore", hasPlayedBefore);
 
             if (!function.isnil() && function.isfunction()) {
                 try {

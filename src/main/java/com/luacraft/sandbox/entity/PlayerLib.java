@@ -14,7 +14,6 @@ import com.luacraft.sandbox.inventory.PlayerInventoryLib;
 import com.luacraft.sandbox.util.ComponentUtils;
 
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 public class PlayerLib extends LivingEntityLib {
     private final Player player;
@@ -73,14 +72,8 @@ public class PlayerLib extends LivingEntityLib {
             @Override
             public LuaValue call() {
                 String rawPrefix = LuaCraft.chat.getPlayerPrefix(player);
-                Component prefixComp = LegacyComponentSerializer.builder()
-                                        .character('&')
-                                        .hexColors()
-                                        .useUnusualXRepeatedCharacterHexFormat()
-                                        .build()
-                                        .deserialize(rawPrefix);
                 
-                return new ComponentLib(prefixComp);
+                return LuaValue.valueOf(rawPrefix);
             }
         });
 
@@ -104,14 +97,8 @@ public class PlayerLib extends LivingEntityLib {
             @Override
             public LuaValue call() {
                 String rawSuffix = LuaCraft.chat.getPlayerSuffix(player);
-                Component suffixComp = LegacyComponentSerializer.builder()
-                                        .character('&')
-                                        .hexColors()
-                                        .useUnusualXRepeatedCharacterHexFormat()
-                                        .build()
-                                        .deserialize(rawSuffix);
                 
-                return new ComponentLib(suffixComp);
+                return LuaValue.valueOf(rawSuffix);
             }
         });
 
@@ -149,6 +136,31 @@ public class PlayerLib extends LivingEntityLib {
                 }
 
                 return table;
+            }
+        });
+
+        rawset(LuaValue.valueOf("IsOnline"), new ZeroArgFunction() {
+            @Override
+            public LuaValue call() {
+                return LuaValue.valueOf(player.isOnline());
+            }
+        });
+
+        rawset(LuaValue.valueOf("SendMessage"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue message) {
+                Component text = ComponentUtils.luaValueToComponent(message);
+
+                player.sendMessage(text);
+
+                return LuaValue.NIL;
+            }
+        });
+
+        rawset(LuaValue.valueOf("HasPermission"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue permission) {
+                return LuaValue.valueOf(player.hasPermission(permission.checkjstring()));
             }
         });
 

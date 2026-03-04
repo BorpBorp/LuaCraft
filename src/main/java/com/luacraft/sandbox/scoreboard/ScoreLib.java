@@ -27,6 +27,17 @@ public class ScoreLib extends LuaTable {
             }
         });
 
+        rawset(LuaValue.valueOf("SetCustomName"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue component) {
+                Component comp = ComponentUtils.luaValueToComponent(component);
+
+                score.customName(comp);
+
+                return LuaValue.NIL;
+            }
+        });
+
         rawset(LuaValue.valueOf("SetNumberFormat"), new TwoArgFunction() {
             @Override
             public LuaValue call(LuaValue type, LuaValue component) {
@@ -36,6 +47,9 @@ public class ScoreLib extends LuaTable {
                     case "fixed":
                         Component newComp = ComponentUtils.luaValueToComponent(component);
                         score.numberFormat(NumberFormat.fixed(newComp));
+                        break;
+                    case "blank":
+                        score.numberFormat(NumberFormat.blank());
                         break;
                     default:
                         score.numberFormat(NumberFormat.styled(Style.empty()));

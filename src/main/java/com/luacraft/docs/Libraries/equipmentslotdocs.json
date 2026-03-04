@@ -11,5 +11,19 @@
         "Description": "Returns whether this equipment slot is a hand slot",
         "ReturnType": "Boolean",
         "Returns": "IsHand"
+    },
+
+    "IsMainHand": {
+        "Category": "EquipmentSlot",
+        "Description": "Returns whether this equipment is main hand",
+        "ReturnType": "Boolean",
+        "Returns": "IsMainHand"
+    },
+
+    "IsOffHand": {
+        "Category": "EquipmentSlot",
+        "Description": "Returns whether this equipment is off hand",
+        "ReturnType": "Boolean",
+        "Returns": "IsOffHand"
     }
 }

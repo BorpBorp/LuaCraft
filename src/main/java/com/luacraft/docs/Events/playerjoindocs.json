@@ -10,12 +10,17 @@
             }
         },
         "AvailableFunctions": {
-            "setJoinMessage": {
+            "SetJoinMessage": {
                 "Description": "Set or Disable the public Join message shown to players",
                 "Parameters": {
                     "name": "Message",
                     "types": ["String", "Component"]
                 }
+            },
+            "HasPlayedBefore": {
+                "Description": "Returns whether this is the players first time joining or not",
+                "ReturnType": "Boolean",
+                "Returns": "FirstTime"
             }
         }
     }

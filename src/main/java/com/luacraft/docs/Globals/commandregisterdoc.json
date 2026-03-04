@@ -19,19 +19,19 @@
                         "name": "description",
                         "type": "string",
                         "description": "Description of what the command does",
-                        "required": true
+                        "required": false
                     },
                     {
                         "name": "usage",
                         "type": "string",
                         "description": "Usage info shown to players",
-                        "required": true
+                        "required": false
                     },
                     {
                         "name": "permission",
                         "type": "string",
                         "description": "Permission node required to use command (* for all)",
-                        "required": true
+                        "required": false
                     },
                     {
                         "name": "onExecute",

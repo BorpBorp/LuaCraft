@@ -1,0 +1,7 @@
+{
+    "Particle": {
+        "Description": "Create a new particle object to modify",
+        "ArgumentTypes": ["String", "Location"],
+        "Arguments": ["Particle Name", "Location"]
+    }
+}

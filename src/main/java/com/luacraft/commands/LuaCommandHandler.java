@@ -26,6 +26,7 @@ public class LuaCommandHandler implements CommandExecutor {
         }
 
         String subcommand = args[0].toLowerCase();
+        String fileName;
 
         long startTime = System.nanoTime();
 
@@ -35,7 +36,7 @@ public class LuaCommandHandler implements CommandExecutor {
                     sender.sendMessage("Usage: /lua reload <filename>");
                     return true;
                 }
-                String fileName = args[1];
+                fileName = args[1];
                 try {
                     ScriptLoader.loadSingleScript(allGlobals, fileName);
                 } catch (IOException e) {
@@ -43,7 +44,7 @@ public class LuaCommandHandler implements CommandExecutor {
                 } catch (LuaError e) {
                     sender.sendMessage("LuaError: " + e.getMessage());
                 }
-            break;
+                break;
             case "reloadall":
                 try {
                     ScriptLoader.loadAllScripts(allGlobals);

@@ -1,0 +1,27 @@
+{
+    "OnEntitySpawn": {
+        "Description": "Called whenever an Entity spawns",
+        "Arguments": ["event"],
+        "ArgumentTypes": ["EventObject"],
+        "EventObjects": {
+            "Player": {
+                "Description": "The Entity that spawned",
+                "Type": "Entity"
+            }
+        },
+        "AvailableFunctions": {
+            "GetLocation": {
+                "Description": "Returns the location of the spawn",
+                "ReturnType": "Location",
+                "Returns": "SpawnLocation"
+            },
+            "ShouldSpawn": {
+                "Description": "Set whether this entity should spawn or not",
+                "Parameters": {
+                    "name": "Should",
+                    "types": ["Boolean"]
+                }
+            }
+        }
+    }
+}

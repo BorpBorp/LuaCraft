@@ -72,5 +72,19 @@
     "Inventory": {
         "Category": "Player",
         "Description": "An accessor object used to interact with the player's inventory. This is not a function."
+    },
+
+    "IsOnline": {
+        "Category": "Player",
+        "Description": "Returns whether the player is currently online or not",
+        "ReturnType": "Boolean",
+        "Returns": "IsOnline"
+    },
+
+    "SendMessage": {
+        "Category": "Player",
+        "Description": "Send a message directly to the player.",
+        "ArgumentTypes": ["MiniMessage|Component|String"],
+        "Arguments": ["Message"]
     }
 }

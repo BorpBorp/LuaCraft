@@ -1,19 +1,24 @@
 package com.luacraft.sandbox.inventory;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.TwoArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
 
+import com.luacraft.LuaCraft;
 import com.luacraft.sandbox.entity.PlayerLib;
 import com.luacraft.sandbox.item.ItemStackLib;
+
+import io.papermc.paper.persistence.PersistentDataContainerView;
 
 public class InventoryLib extends LuaTable {
     public InventoryLib(Inventory inventory) {
@@ -124,6 +129,33 @@ public class InventoryLib extends LuaTable {
                 }
 
                 return items;
+            }
+        });
+
+        rawset(LuaValue.valueOf("Contains"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue item) {
+                ItemStack itemstack = ((ItemStackLib) item).getItemStack();
+                if (itemstack != null) {
+                    return LuaValue.valueOf(inventory.containsAtLeast(itemstack, itemstack.getAmount()));
+                } else {
+                    throw new LuaError("Contains requires a valid itemstack");
+                }
+            }
+        });
+
+        rawset(LuaValue.valueOf("ContainsWithMetaData"), new TwoArgFunction() {
+            @Override
+            public LuaValue call(LuaValue item, LuaValue key) {
+                ItemStack itemstack = ((ItemStackLib) item).getItemStack();
+                NamespacedKey nameKey = new NamespacedKey(LuaCraft.getPlugin(), key.checkjstring());
+
+                if (itemstack == null || key.isnil())
+                    throw new LuaError("ContainsWithMetaData requires a valid itemstack and String");
+
+                PersistentDataContainerView pdc = itemstack.getPersistentDataContainer();
+
+                return LuaValue.valueOf(inventory.containsAtLeast(itemstack, itemstack.getAmount()) && pdc.has(nameKey));
             }
         });
     }

@@ -6,7 +6,7 @@
 
     <groupId>com.luacraft</groupId>
     <artifactId>LuaCraft</artifactId>
-    <version>2.1.1</version>
+    <version>2.2.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>org.luaj</groupId>
             <artifactId>luaj-jse</artifactId>
-            <version>3.0.1</version>
+            <version>3.0.2</version>
         </dependency>
         <dependency>
             <groupId>com.zaxxer</groupId>
@@ -65,6 +65,17 @@
             <version>1.7.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>net.kyori</groupId>
+            <artifactId>adventure-text-minimessage</artifactId>
+            <version>4.26.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.bcel</groupId>
+            <artifactId>bcel</artifactId>
+            <version>6.12.0</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -79,7 +90,6 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <minimizeJar>true</minimizeJar>
                             <relocations>
                                 <relocation>
                                     <pattern>org.bstats</pattern>
@@ -92,6 +102,14 @@
                                 <relocation>
                                     <pattern>org.apache.commons.text</pattern>
                                     <shadedPattern>com.luacraft.libs.commonstext</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.luaj</pattern>
+                                    <shadedPattern>com.luacraft.libs.luaj</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>org.luaj.vm2</pattern>
+                                    <shadedPattern>com.luacraft.libs.luaj.vm2</shadedPattern>
                                 </relocation>
                             </relocations>
                             <filters>

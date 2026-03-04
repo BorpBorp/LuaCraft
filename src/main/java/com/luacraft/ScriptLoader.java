@@ -13,6 +13,7 @@ import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.jse.JsePlatform;
+import org.luaj.vm2.luajc.LuaJC;
 
 import com.luacraft.sandbox.chat.ChatLib;
 import com.luacraft.sandbox.command.CommandLib;
@@ -22,11 +23,13 @@ import com.luacraft.sandbox.events.EventTable;
 import com.luacraft.sandbox.inventory.InventoryFactory;
 import com.luacraft.sandbox.item.ItemStackFactory;
 import com.luacraft.sandbox.location.LocationFactory;
+import com.luacraft.sandbox.minimessage.MiniMessageFactory;
+import com.luacraft.sandbox.particle.ParticleFactory;
 import com.luacraft.sandbox.scoreboard.ScoreboardFactory;
 import com.luacraft.sandbox.util.ColorUtils;
 import com.luacraft.sandbox.util.PlayerUtil;
 import com.luacraft.sandbox.util.WaitUtil;
-import com.luacraft.sandbox.velocity.VectorFactory;
+import com.luacraft.sandbox.vector.VectorFactory;
 
 public class ScriptLoader {
     public record FileData(String fileName, String fileContents) {}
@@ -64,6 +67,7 @@ public class ScriptLoader {
         globals.set("Itemstack", new ItemStackFactory());
         globals.set("Location", new LocationFactory());
         globals.set("Component", new ComponentFactory());
+        globals.set("MiniMessage", new MiniMessageFactory());
         globals.set("Inventory", new InventoryFactory());
         globals.set("Wait", WaitUtil.Wait(mainPlugin));
         globals.set("PlayerUtil", new PlayerUtil());
@@ -72,6 +76,7 @@ public class ScriptLoader {
         globals.set("Color", ColorUtils.Color());
         globals.set("Vector", new VectorFactory());
         globals.set("Scoreboard", new ScoreboardFactory());
+        globals.set("Particle", new ParticleFactory());
 
         LuaValue pkg = globals.get("package");
 
@@ -106,12 +111,8 @@ public class ScriptLoader {
      * @param allGlobals
      * @throws IOException 
      */
-    public static void loadAllScripts(Map<String, Globals> allGlobals) throws IOException, LuaError { 
-        FilenameFilter filter = new FilenameFilter() {
-            public boolean accept(File file, String name) {
-                return !name.startsWith("-") && name.endsWith(".lua");
-            }
-        };
+    public static void loadAllScripts(Map<String, Globals> allGlobals) throws IOException, LuaError {
+        FilenameFilter filter = (file, name) -> !name.startsWith("-") && name.endsWith(".lua");
 
         File[] allFiles = scriptsFolder.listFiles(filter);
         if (allFiles == null) {
@@ -120,9 +121,7 @@ public class ScriptLoader {
         }
 
         for (File file : allFiles) {
-
             Globals globals = JsePlatform.standardGlobals();
-
             setupGlobals(globals, file.getName());
 
             FileData data = readScriptFile(file);
@@ -131,17 +130,25 @@ public class ScriptLoader {
                 continue;
             }
 
+            String rawSource = data.fileContents();
+            boolean useLuaJC = rawSource.contains("@LuaJC");
+            String luaSource = preprocess(rawSource);
+
             CommandLib.commandUnRegister(data.fileName());
 
-            LuaValue loadedScript = globals.load(data.fileContents(), data.fileName());
+            if (useLuaJC) {
+                globals.loader = LuaJC.instance;
+            }
 
+            LuaValue loadedScript = globals.load(luaSource, data.fileName());
             if (loadedScript != null) {
                 loadedScript.call();
                 allGlobals.put(data.fileName(), globals);
             }
 
-            Bukkit.getScheduler().runTask(mainPlugin, () -> CommandLib.refreshAllPlayerCommands());
         }
+
+        Bukkit.getScheduler().runTask(mainPlugin, () -> {CommandLib.refreshAllPlayerCommands();});
     }
 
     public static void loadSingleScript(Map<String, Globals> allGlobals, String fileName) throws IOException, LuaError {
@@ -149,8 +156,8 @@ public class ScriptLoader {
         Path filePath = file.toPath();
 
         String fileContents = Files.readString(filePath);
-        Globals globals = JsePlatform.standardGlobals();
 
+        Globals globals = JsePlatform.standardGlobals();
         setupGlobals(globals, fileName);
 
         CommandLib.commandUnRegister(fileName);
@@ -163,5 +170,15 @@ public class ScriptLoader {
         }
 
         Bukkit.getScheduler().runTask(mainPlugin, () -> CommandLib.refreshAllPlayerCommands());
+    }
+
+    private static String preprocess(String src) {
+        StringBuilder out = new StringBuilder();
+        for (String line : src.split("\n")) {
+            String trimmed = line.trim();
+            if (trimmed.startsWith("@")) continue; // strip lines like: @LuaJC
+            out.append(line).append('\n');
+        }
+        return out.toString();
     }
 }

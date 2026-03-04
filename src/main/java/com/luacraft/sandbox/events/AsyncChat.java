@@ -67,7 +67,7 @@ public class AsyncChat implements Listener {
             LuaFunction getMessage = new ZeroArgFunction() {
                 @Override
                 public LuaValue call() {
-                    LuaComponent holder = new LuaComponent(player.displayName());
+                    LuaComponent holder = new LuaComponent(event.message());
                     
                     return new ComponentLib(holder.getComponent());
                 }

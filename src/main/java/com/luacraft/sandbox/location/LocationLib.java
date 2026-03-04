@@ -4,9 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
+import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.OneArgFunction;
+import org.luaj.vm2.lib.TwoArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
 
 import com.luacraft.sandbox.entity.ItemLib;
@@ -38,25 +40,49 @@ public class LocationLib extends LuaTable {
 
         rawset(LuaValue.valueOf("DistanceTo"), new OneArgFunction() {
             @Override
-            public LuaValue call(LuaValue arg) {
-                if (arg instanceof LocationLib) {
-                    Location otherLoc = ((LocationLib) arg).getLocation();
+            public LuaValue call(LuaValue loc) {
+                if (loc instanceof LocationLib) {
+                    Location otherLoc = ((LocationLib) loc).getLocation();
 
                     return LuaValue.valueOf(location.distance(otherLoc));
                 }
-                throw new org.luaj.vm2.LuaError("DistanceTo requires a Location object");
+                throw new LuaError("DistanceTo requires a Location object");
             }
         });
 
         rawset(LuaValue.valueOf("DistanceToSquared"), new OneArgFunction() {
             @Override
-            public LuaValue call(LuaValue arg) {
-                if (arg instanceof LocationLib) {
-                    Location otherLoc = ((LocationLib) arg).getLocation();
+            public LuaValue call(LuaValue loc) {
+                if (loc instanceof LocationLib) {
+                    Location otherLoc = ((LocationLib) loc).getLocation();
                     
                     return LuaValue.valueOf(location.distanceSquared(otherLoc));
                 }
-                throw new org.luaj.vm2.LuaError("DistanceToSquared requires a Location object");
+                throw new LuaError("DistanceToSquared requires a Location object");
+            }
+        });
+
+        rawset(LuaValue.valueOf("IsWithinBounds"), new TwoArgFunction() {
+            @Override
+            public LuaValue call(LuaValue loc1, LuaValue loc2) {
+                if (loc1 instanceof LocationLib && loc2 instanceof LocationLib) {
+                    Location location1 = ((LocationLib) loc1).getLocation();
+                    Location location2 = ((LocationLib) loc2).getLocation();
+
+                    double minX = Math.min(location1.getX(), location2.getX());
+                    double maxX = Math.max(location1.getX(), location2.getX());
+                    
+                    double minY = Math.min(location1.getY(), location2.getY());
+                    double maxY = Math.max(location1.getY(), location2.getY());
+                    
+                    double minZ = Math.min(location1.getZ(), location2.getZ());
+                    double maxZ = Math.max(location1.getZ(), location2.getZ());
+                    
+                    boolean inRegion = location.getX() >= minX && location.getX() <= maxX && location.getY() >= minY && location.getY() <= maxY && location.getZ() >= minZ && location.getZ() <= maxZ;
+                    
+                    return LuaValue.valueOf(inRegion);
+                }
+                throw new LuaError("IsInRegion requires two Location objects");
             }
         });
 
@@ -79,6 +105,15 @@ public class LocationLib extends LuaTable {
                 Item droppedItem = location.getWorld().dropItem(location, stack);
 
                 return new ItemLib(droppedItem);
+            }
+        });
+
+        rawset(LuaValue.valueOf("Compare"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue loc) {
+                Location otherLoc = ((LocationLib) loc).getLocation();
+
+                return LuaValue.valueOf(location.equals(otherLoc));
             }
         });
     }

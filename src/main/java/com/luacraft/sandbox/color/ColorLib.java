@@ -1,5 +1,7 @@
 package com.luacraft.sandbox.color;
 
+import org.bukkit.Color;
+
 import net.kyori.adventure.text.format.TextColor;
 
 public class ColorLib {
@@ -11,6 +13,10 @@ public class ColorLib {
         int blue = Math.clamp(b, 0, 255);
 
         this.color = TextColor.color(red, green, blue);
+    }
+
+    public Color getBukkitColor() {
+        return Color.fromRGB(color.red(), color.green(), color.blue());
     }
 
     public TextColor getColor() {

@@ -1,4 +1,4 @@
-package com.luacraft.sandbox.velocity;
+package com.luacraft.sandbox.vector;
 
 import org.bukkit.util.Vector;
 import org.luaj.vm2.LuaTable;

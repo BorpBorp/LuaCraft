@@ -46,5 +46,19 @@
         "Description": "spawns an item entity of the itemstack at the specific location",
         "ArgumentTypes": ["Itemstack"],
         "Arguments": ["Item"]
+    },
+
+    "Compare": {
+        "Category": "Location",
+        "Description": "Compare two locations",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["OtherLocation"]
+    },
+
+    "IsWithinBounds": {
+        "Category": "Location",
+        "Description": "Check if the location is within the AABB bounds of two other locations",
+        "ArgumentTypes": ["Location", "Location"],
+        "Arguments": ["Location1", "Location2"]
     }
 }

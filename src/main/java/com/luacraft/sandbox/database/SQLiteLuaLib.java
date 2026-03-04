@@ -135,7 +135,8 @@ public class SQLiteLuaLib extends LuaTable {
                                     }
                                 }
                             } else {
-                                result = LuaValue.valueOf(payload.toString());
+                                String stringValue = (payload instanceof String) ? (String) payload : payload.toString();
+                                result = LuaValue.valueOf(stringValue);
                             }
 
                             cache.computeIfAbsent(id, x -> new ConcurrentHashMap<>()).put(k, result);

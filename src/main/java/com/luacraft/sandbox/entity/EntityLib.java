@@ -9,7 +9,7 @@ import org.luaj.vm2.lib.OneArgFunction;
 import org.luaj.vm2.lib.ZeroArgFunction;
 
 import com.luacraft.sandbox.location.LocationLib;
-import com.luacraft.sandbox.velocity.VectorLib;
+import com.luacraft.sandbox.vector.VectorLib;
 
 public class EntityLib extends LuaTable {
     private final Entity entity;
@@ -58,6 +58,17 @@ public class EntityLib extends LuaTable {
             @Override
             public LuaValue call() {
                 return new VectorLib(entity.getVelocity());
+            }
+        });
+
+        rawset(LuaValue.valueOf("SetVisibleByDefault"), new OneArgFunction() {
+            @Override
+            public LuaValue call(LuaValue visible) {
+                Boolean canSee = visible.checkboolean();
+
+                entity.setVisibleByDefault(canSee);
+
+                return LuaValue.NIL;
             }
         });
     }

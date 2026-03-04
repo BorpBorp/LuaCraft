@@ -1,0 +1,8 @@
+{
+    "SetBlock": {
+        "Category": "BlockDisplay",
+        "Description": "Set the block for the Block Display Entity to use",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["BlockName"]
+    }
+}

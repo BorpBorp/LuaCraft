@@ -1,0 +1,41 @@
+{
+    "Count": {
+        "Category": "Particle",
+        "Description": "Set the amount of particles to create",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["Amount"]
+    },
+
+    "Offset": {
+        "Category": "Particle",
+        "Description": "Set the offset of the particle",
+        "ArgumentTypes": ["Vector"],
+        "Arguments": ["Offset"]
+    },
+
+    "Color": {
+        "Category": "Particle",
+        "Description": "Set the Color of the particle, only works on particles that support DustOptions",
+        "ArgumentTypes": ["Color"],
+        "Arguments": ["Color"]
+    },
+
+    "Size": {
+        "Category": "Particle",
+        "Description": "Set the size of the particle, only works on particles that support Sizing",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["Size"]
+    },
+
+    "Receivers": {
+        "Category": "Particle",
+        "Description": "Set who receives this in circular radius",
+        "ArgumentTypes": ["Number"],
+        "Arguments": ["Radius"]
+    },
+
+    "Spawn": {
+        "Category": "Particle",
+        "Description": "Spawn the particle into the world"
+    }
+}

@@ -76,6 +76,8 @@ public class LuaCraft extends JavaPlugin {
         }
         
         getCommand("lua").setExecutor(new LuaCommandHandler(allGlobals));
+
+        setupChat();
     }
 
     @Override
@@ -87,7 +89,6 @@ public class LuaCraft extends JavaPlugin {
         return plugin;
     }
 
-    @SuppressWarnings("unused")
     private boolean setupChat() {
         RegisteredServiceProvider<Chat> rsp = getServer().getServicesManager().getRegistration(Chat.class);
         if (rsp == null) return false;

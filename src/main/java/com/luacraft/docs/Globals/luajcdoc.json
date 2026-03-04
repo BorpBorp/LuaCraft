@@ -1,0 +1,5 @@
+{
+    "@LuaJC": {
+        "Description": "Enables LuaJC compiling, this parses slower but executes much faster than LuaC. This is the suggested if you intend to do stuff per tick. Works per file, place at the top of your file for readability sake"
+    }
+}

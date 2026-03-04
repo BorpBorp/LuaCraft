@@ -1,0 +1,7 @@
+{
+    "MiniMessage": {
+        "Description": "Creates a new MiniMessage object that can be overloaded with as many arguments as needed. Listed arguments are accepted.",
+        "ArgumentTypes": ["Any"],
+        "Arguments": ["Any"]
+    }
+}

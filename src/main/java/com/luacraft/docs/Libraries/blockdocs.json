@@ -34,5 +34,28 @@
         "Description": "Returns the location of the block",
         "ReturnType": "Location",
         "Returns": "BlockLocation"
+    },
+
+    "HasMetaData": {
+        "Category": "Block",
+        "Description": "Returns whether the block has the MetaData",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Key"],
+        "ReturnType": "Boolean",
+        "Returns": "HasMetaData"
+    },
+
+    "SetMetaData": {
+        "Category": "Block",
+        "Description": "Set the MetaData of a block. Supports String, Number and Boolean",
+        "ArgumentTypes": ["String", "String|Number|Boolean"],
+        "Arguments": ["Key", "Value"]
+    },
+
+    "GetMetaData": {
+        "Category": "Block",
+        "Description": "Get the MetaData by the key from a block",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Key"]
     }
 }

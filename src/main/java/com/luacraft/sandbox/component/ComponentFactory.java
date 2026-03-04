@@ -10,6 +10,7 @@ import com.luacraft.sandbox.util.ComponentUtils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextColor;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 
 public class ComponentFactory extends VarArgFunction {
     private static final LegacyComponentSerializer SERIALIZER = LegacyComponentSerializer.builder()
@@ -47,5 +48,11 @@ public class ComponentFactory extends VarArgFunction {
         }
 
         return new ComponentLib(message);
+    }
+
+    public static final ComponentLib colorize(Component component) {
+        String plainText = PlainTextComponentSerializer.plainText().serialize(component);
+        Component parsed = SERIALIZER.deserialize(plainText);
+        return new ComponentLib(parsed);
     }
 }

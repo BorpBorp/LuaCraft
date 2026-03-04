@@ -1,0 +1,15 @@
+{
+    "SetItem": {
+        "Category": "ItemDisplay",
+        "Description": "Set the item for the Item Display Entity to display",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"]
+    },
+
+    "SetItemTransformation": {
+        "Category": "ItemDisplay",
+        "Description": "Set the transformation of the item",
+        "ArgumentTypes": ["String"],
+        "Arguments": ["Transformation"]
+    }
+}

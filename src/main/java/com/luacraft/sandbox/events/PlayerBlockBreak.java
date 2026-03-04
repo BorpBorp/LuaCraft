@@ -5,12 +5,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.NamespacedKey;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.persistence.PersistentDataContainer;
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaError;
 import org.luaj.vm2.LuaFunction;
@@ -19,6 +22,7 @@ import org.luaj.vm2.LuaValue;
 import org.luaj.vm2.lib.ZeroArgFunction;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
+import com.luacraft.LuaCraft;
 import com.luacraft.sandbox.block.BlockLib;
 import com.luacraft.sandbox.entity.PlayerLib;
 import com.luacraft.sandbox.item.ItemStackLib;
@@ -90,6 +94,16 @@ public class PlayerBlockBreak implements Listener {
                     Bukkit.getLogger().info("Lua Script Error: " + e.getMessage());
                 }
             }
+        }
+
+        PersistentDataContainer pdc = block.getChunk().getPersistentDataContainer();
+        Location loc = block.getLocation();
+
+        String blockKeyPrefix = loc.getX() + "_" + loc.getY() + "_" + loc.getZ() + "_" + loc.getWorld().getName() + "-";
+
+        for (String metaKey : BlockLib.getKeys()) {
+            NamespacedKey key = new NamespacedKey(LuaCraft.getPlugin(), blockKeyPrefix + metaKey);
+            pdc.remove(key);
         }
     }
 }

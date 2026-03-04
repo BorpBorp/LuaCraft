@@ -51,5 +51,37 @@
         "Description": "Gets the slots of the inventory that contain an item (Expected to include empty slots in the future)",
         "ReturnType": "Table",
         "Returns": "Slots"
+    },
+
+    "GetItemInMainHand": {
+        "Category": "Inventory",
+        "Description": "Gets the item in the main hand",
+        "ReturnType": "Itemstack",
+        "Returns": "Item"
+    },
+
+    "GetItemInOffHand": {
+        "Category": "Inventory",
+        "Description": "Get the item in the off hand",
+        "ReturnType": "Itemstack",
+        "Returns": "Item"
+    },
+
+    "Contains": {
+        "Category": "Inventory",
+        "Description": "Returns whether the inventory contains the itemstack",
+        "ArgumentTypes": ["Itemstack"],
+        "Arguments": ["Item"],
+        "ReturnType": "Boolean",
+        "Returns": "Contains"
+    },
+
+    "ContainsWithMetaData": {
+        "Category": "Inventory",
+        "Description": "Returns whether the inventory contains the itemstack with specific metadata",
+        "ArgumentTypes": ["Itemstack", "String"],
+        "Arguments": ["Item", "MetaDataKey"],
+        "ReturnType": "Boolean",
+        "Returns": "Contains"
     }
 }
