@@ -13,9 +13,10 @@ LuaCraft requires Paper to be installed on the server, it does not support Spigo
 LuaCraft currently supports 1.21.4+ and will intend to support this version and forward. The current projects scope does not intend to support lower versions than this.
 <br>
 <br>
-LuaCraft depends on `Vault`
+LuaCraft soft depends on `Vault`
 # Download
 You can download the latest release of LuaCraft at the [Releases](https://github.com/BorpBorp/LuaCraft/releases)
+You can find our Discord at [Discord](https://discord.gg/Nvmajwdfmz)
 # Example
 ```lua
 function ServerEvent.OnPlayerJoin(event)
