@@ -1,6 +1,6 @@
 {
     "OnPlayerMove": {
-        "Description": "Called when a player quits the server",
+        "Description": "Called when a player moves in the server",
         "Arguments": ["event"],
         "ArgumentTypes": ["EventObject"],
         "EventObjects": {
