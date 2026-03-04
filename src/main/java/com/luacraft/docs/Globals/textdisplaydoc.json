@@ -1,0 +1,7 @@
+{
+    "TextDisplay": {
+        "Description": "Creates a new Text Display Entity Object that will be spawned in the world on execution",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["SpawnLocation"]
+    }
+}

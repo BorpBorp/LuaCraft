@@ -1,0 +1,7 @@
+{
+    "ItemDisplay": {
+        "Description": "Creates a new Item Display Entity Object that will be spawned in the world on execution",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["SpawnLocation"]
+    }
+}

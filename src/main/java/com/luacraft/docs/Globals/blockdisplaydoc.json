@@ -1,0 +1,7 @@
+{
+    "BlockDisplay": {
+        "Description": "Creates a new Block Display Entity Object that will be spawned in the world on execution",
+        "ArgumentTypes": ["Location"],
+        "Arguments": ["SpawnLocation"]
+    }
+}
