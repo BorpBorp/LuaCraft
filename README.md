@@ -28,3 +28,47 @@ function ServerEvent.OnPlayerJoin(event)
    Chat.Broadcast(component)
 end
 ```
+
+# Testing
+LuaCraft's simple testing framework implements [edubart/lester](https://github.com/edubart/lester).
+
+## Writing tests
+Tests are written in `resources/tests/`.
+
+The methods and configuration provided by *lester* are available under the `Test` global.
+Additional globals are provided to the testing environment, such as `debug` and `TestReflect` (described later)
+
+The core functions needed to test are `Test.describe`, `Test.it`, and `Test.expect`; a simple test may look like this:
+```lua
+local describe, it, expect = lester.describe, lester.it, lester.expect
+
+describe("module", function()
+  it("feature", function()
+    expect.equal(2 + 2, 4)
+  end)
+end)
+```
+
+### Reflection
+
+Reflection may be useful for writing tests that verify using APIs not directly exposed by LuaCraft.
+
+The global `TestReflect` is only exposed during testing, and allows lookup of java properties via `TestReflect.GetField(obj, fieldName)` and `TestReflect.CallMethod(obj, methodName, ...args)`.
+
+For example:
+```lua
+//-- Returns an instance of ItemStackLib from LuaCraft
+local item = Item.New("stone", 44)
+//-- We can get ItemStackLib#stack to get the Bukkit ItemStack
+local stack = TestReflect.GetField(item, "stack")
+//-- All methods and functions on this ItemStack are available now!
+local amount = TestReflect.CallMethod(itemStack, "getAmount")
+```
+
+Calling getter methods is recommended over fields, as Bukkit fields may be inconsistent.
+
+## Running the test environment
+
+Running the test environment is as simple as running `./gradlew luaTest`.
+
+A debugger is opened on port 8000, which IntelliJ can attach to via the 'Attach debugger' button in the debug console's output.

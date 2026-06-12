@@ -11,12 +11,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.luacraft.sandbox.util.ComponentUtils;
+import com.luacraft.test.TestGlobals;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import org.luaj.vm2.Globals;
-import org.luaj.vm2.LuaError;
-import org.luaj.vm2.LuaValue;
+import org.luaj.vm2.*;
+import org.luaj.vm2.lib.DebugLib;
+import org.luaj.vm2.lib.OneArgFunction;
+import org.luaj.vm2.lib.VarArgFunction;
 import org.luaj.vm2.lib.jse.JsePlatform;
 import org.luaj.vm2.luajc.LuaJC;
 
@@ -126,6 +129,10 @@ public class ScriptLoader {
 
         pkg.set("path", LuaValue.valueOf(scriptsPatch));
         pkg.set("cpath", LuaValue.NIL);
+
+        if (LuaCraft.getInstance().getTestState().ENABLED) {
+            TestGlobals.loadAll(globals);
+        }
     }
 
     private static FileData readScriptFile(File file) throws IOException {

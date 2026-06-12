@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.luacraft.test.TestState;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
@@ -36,6 +37,7 @@ public class LuaCraft extends JavaPlugin {
     private SQLiteLuaLib dataLib;
     public static Chat chat = null;
     private Boolean hasVaultInstalled;
+    private TestState testState = new TestState();
     private static LuaCraft instance;
 
     @Override
@@ -89,6 +91,7 @@ public class LuaCraft extends JavaPlugin {
                 }
             } catch (IOException e) {} catch (LuaError e) {
                 Bukkit.getLogger().severe("Lua Parsing Errors found:");
+                e.printStackTrace();
                 Bukkit.getLogger().severe(LuaErrorAssert.makeItActuallyPretty(e.getMessage()));
             }
         });
@@ -146,5 +149,9 @@ public class LuaCraft extends JavaPlugin {
         if (rsp == null) return false;
         chat = rsp.getProvider();
         return chat != null;
+    }
+
+    public TestState getTestState() {
+        return testState;
     }
 }

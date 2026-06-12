@@ -1,8 +1,12 @@
 package com.luacraft.addons.java;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.luacraft.LuaCraft;
+import org.bukkit.Bukkit;
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
 

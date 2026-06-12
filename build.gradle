@@ -69,3 +69,14 @@ tasks.register("apiJar", com.github.jengelman.gradle.plugins.shadow.tasks.Shadow
 }
 
 build.dependsOn shadowJar
+
+tasks.register('luaTest', JavaExec) {
+    dependsOn shadowJar
+    group = 'verification'
+    classpath = files([
+            shadowJar.archiveFile.get().asFile,
+            project.configurations.compileClasspath.find { it.name.startsWith("gson") },
+            sourceSets.main.runtimeClasspath
+    ])
+    mainClass.set('com.luacraft.test.TestRunner')
+}
