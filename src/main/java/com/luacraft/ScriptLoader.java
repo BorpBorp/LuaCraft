@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.luacraft.sandbox.command.ArgsLib;
+import com.luacraft.sandbox.command.NewCommandLib;
 import com.luacraft.sandbox.util.ComponentUtils;
 import com.luacraft.test.TestGlobals;
 import org.bukkit.Bukkit;
@@ -116,7 +118,8 @@ public class ScriptLoader {
         globals.set("Wait", WaitUtil.Wait(mainPlugin, fileName));
         globals.set("Halt", WaitUtil.Halt(mainPlugin, globals, fileName));
         globals.set("BlockUtil", new BlockUtils());
-        globals.set("Command", new CommandLib(fileName));
+        globals.set("Command", new NewCommandLib(fileName));
+        globals.set("Args", new ArgsLib());
         globals.set("SQL", dataLib);
         globals.set("Vector", VectorLib.createTable());
         globals.set("Scoreboard", new ScoreboardFactory());

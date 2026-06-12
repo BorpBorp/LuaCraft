@@ -7,6 +7,8 @@ import org.luaj.vm2.LuaFunction;
 import org.luaj.vm2.LuaTable;
 import org.luaj.vm2.LuaValue;
 
+import javax.annotation.Nullable;
+
 public class LuaErrorAssert {
     private static Player reloader;
 
@@ -29,7 +31,7 @@ public class LuaErrorAssert {
         return clean;
     }
 
-    public static void assertPlayer(CommandSender sender) {
+    public static void setReloader(CommandSender sender) {
         if (sender instanceof Player player) {
             reloader = player;
         }
@@ -37,11 +39,7 @@ public class LuaErrorAssert {
 
     public static boolean checkBoolean(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.isboolean()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Boolean expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Boolean expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Boolean expected, got " + value.typename()), player);
         }
 
         return value.toboolean();
@@ -49,11 +47,7 @@ public class LuaErrorAssert {
 
     public static String checkString(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.isstring()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' String expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' String expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' String expected, got " + value.typename()), player);
         }
 
         return value.tojstring();
@@ -61,11 +55,7 @@ public class LuaErrorAssert {
 
     public static int checkInt(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.isnumber()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename()), player);
         }
 
         return value.toint();
@@ -73,11 +63,7 @@ public class LuaErrorAssert {
 
     public static double checkDouble(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.isnumber()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename()), player);
         }
 
         return value.todouble();
@@ -85,11 +71,7 @@ public class LuaErrorAssert {
 
     public static float checkFloat(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.isnumber()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename()), player);
         }
 
         return value.tofloat();
@@ -97,11 +79,7 @@ public class LuaErrorAssert {
 
     public static long checkLong(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.isnumber()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Number expected, got " + value.typename()), player);
         }
 
         return value.tolong();
@@ -109,11 +87,7 @@ public class LuaErrorAssert {
 
     public static LuaTable checkTable(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.istable()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Table expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Table expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Table expected, got " + value.typename()), player);
         }
 
         return (LuaTable) value;
@@ -121,13 +95,21 @@ public class LuaErrorAssert {
 
     public static LuaFunction checkFunction(LuaValue value, String funcName, int argNum, Player player) {
         if (!value.isfunction()) {
-            reloader = reloader != null ? reloader : player;
-            if (reloader != null) {
-                reloader.sendMessage("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Function expected, got " + value.typename());
-            }
-            throw new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Function expected, got " + value.typename());
+            throwError(new LuaError("[LuaCraft] Bad Argument #" + argNum + " to '" + funcName + "' Function expected, got " + value.typename()), player);
         }
 
         return (LuaFunction) value;
+    }
+
+    public static void throwError(LuaError error, @Nullable Player player) throws LuaError {
+        reloader = reloader != null ? reloader : player;
+        if (reloader != null) {
+            reloader.sendMessage(error.getMessage());
+        }
+        throw error;
+    }
+
+    public static void throwError(String message, @Nullable Player player) throws LuaError {
+        throwError(new LuaError("[LuaCraft] " + message), player);
     }
 }
